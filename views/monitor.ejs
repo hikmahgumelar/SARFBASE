@@ -1,9 +1,18 @@
 <% include ../partial/atas %>
-
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <div class="container">
 <div class="form">
+<script>
 
-<h2>    Sensor Tes : </h2>
+var socket = io('http://172.21.12.213:12345')	
+socket.on('alert', function(data){
+  console.log(data)
+document.getElementById("test").innerHTML = data;
+})
+
+
+</script>
+<h2 >Sensor Tes : <h2 id=test ></h2> </h2>
 
 </div>
 </div>
