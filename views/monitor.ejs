@@ -4,7 +4,7 @@
 <div class="form">
 <script>
 
-var socket = io('http://172.21.12.213:12345')	
+var socket = io('http://localhost:12345')	
 socket.on('alert', function(data){
   console.log(data)
 document.getElementById("test").innerHTML = data;
