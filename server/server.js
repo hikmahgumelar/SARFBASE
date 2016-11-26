@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 1234;
+var port = process.env.PORT || 8888;
 var io = require('socket.io')(12345)
 
 // start the server
