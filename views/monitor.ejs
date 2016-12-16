@@ -1,19 +1,57 @@
 <% include ../partial/atas %>
 <script src="adapter/socket.io.js"></script>
 <script src="adapter/adapter.js"></script>
-
+<% include ../partial/status %>
 <div class="container">
 <div class="form">
 <body>
-<p>
-<h2>Sensor Test : <a id=test ></a></h2> 
+ <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th>NO</th>
+        <th>Tanggal</th>
+        <th>Sensor</th>
+        <th>Status</th>
+        <th>Remark</th>
+      </tr>
+    </thead>
+    <tbody >
+     <tr>
+     	<td>1</td>
+     	<td>12 desember 2016</td>
+     	<td>Genset</td>
+    	<td colour="yelow">Kosong</td>
+     	<td>Site Duri kembangan</td>
+     </tr>
+     <tr>
+     	<td>2</td>
+     	<td>12 desember 2016</td>
+     	<td>AC</td>
+    	<td>OFF</td>
+     	<td>Site Duri kembangan</td>
+     </tr>
+     <tr>
+     	<td>3</td>
+     	<td>12 desember 2016</td>
+     	<td>Lampu 1</td>
+    	<td>OFF</td>
+     	<td>Site Duri kembangan</td>
+     </tr>
+     <tr>
+     	<td>5</td>
+     	<td>12 desember 2016</td>
+     	<td>Lampu 2</td>
+    	<td>OFF</td>
+     	<td>Site Duri kembangan</td>
+     </tr>
+    </tbody>
+  </table>
 
-</p>
 </div>
 </div>
 </body>
 
-<% include ../partial/status %>
+
 
 
 <% include ../partial/bawah %>
