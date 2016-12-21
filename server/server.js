@@ -11,8 +11,9 @@ io.on('connection', function(socket){
 console.log('ada yang konek');
 
 // routes will go here
-app.get('/', function(req, res) {
+app.get('/data', function(req, res) {
 var nama_sensor =  req.param('s');
-io.emit('alert', nama_sensor);  
+io.emit('alert', nama_sensor);
+console.log(nama_sensor);  
 });
 });
