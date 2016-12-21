@@ -7,13 +7,14 @@ var io = require('socket.io')(12345)
 app.listen(port);
 console.log('Server jalan.....');
 console.log('menungu masukan....');
-io.on('connection', function(socket){
-console.log('ada yang konek');
-
+io.on('connection', function(pesan){
+console.log(pesan);
 // routes will go here
-app.get('/', function(req, res) {
+app.get('/data', function(req, res) {
 var nama_sensor =  req.param('s');
 io.emit('alert', nama_sensor);
 res.send(nama_sensor);
+
+
 });
 });

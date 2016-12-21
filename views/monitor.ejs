@@ -1,56 +1,41 @@
 <% include ../partial/atas %>
-<script src="adapter/socket.io.js"></script>
-<script src="adapter/adapter.js"></script>
-<% include ../partial/status %>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <div class="container">
 <div class="form">
+<script src="/adapter/adapter.js"></script>
+<% include ../partial/status %>
+
+
 <body>
- <table class="table table-striped" >
-    <thead>
-      <tr>
-        <th>NO</th>
-        <th>Tanggal dan Jam</th>
-        <th>Sensor</th>
-        <th>Status</th>
-        <th>Remark</th>
-      </tr>
-    </thead>
-    <tbody >
-     <tr>
-     	<td>1</td>
-     	<td>12 desember 2016</td>
-     	<td>Genset</td>
-     	<td>Kosong</td>
-     	<td>Site Duri kembangan</td>
-     </tr>
-     <tr>
-     	<td>2</td>
-     	<td>12 desember 2016</td>
-     	<td>AC</td>
-    	<td>OFF</td>
-     	<td>Site Duri kembangan</td>
-     </tr>
-     <tr>
-     	<td>3</td>
-     	<td>12 desember 2016</td>
-     	<td>Lampu 1</td>
-    	<td>OFF</td>
-     	<td>Site Duri kembangan</td>
-     </tr>
-     <tr>
-     	<td>5</td>
-     	<td>12 desember 2016</td>
-     	<td>Lampu 2</td>
-    	<td>OFF</td>
-     	<td>Site Duri kembangan</td>
-     </tr>
-    </tbody>
-  </table>
+      <table class="table table-striped" >
+      <thead>
+      	<tr>
+      		<th>Tanggal</th>
+            <th>Status Sensor</th>
+
+       
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+        	<td id=messages1 ></td>
+        	<td id=messages2 ></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	
+        </tr>
+      </tbody>
+  	  </table>
+
 
 </div>
 </div>
 </body>
-
 
 
 

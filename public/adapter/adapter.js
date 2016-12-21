@@ -1,8 +1,15 @@
 var target = 'http://localhost'
 var port = '12345'
-var socket = io(target+':'+port)	
-
+var socket = io(target+':'+port)
+var pesan = "data dari client"	
+//socket.on('alert', function(data){
+ // console.log(data)
+//document.getElementById("test").innerHTML = data;
+//});
 socket.on('alert', function(data){
-  console.log(data)
-document.getElementById("test").innerHTML = data;
-})
+
+var a = Date();
+
+    $('#messages1').append($('<p>').text(a));
+    $('#messages2').append($('<p>').text(data));
+ });
