@@ -10,6 +10,6 @@ socket.on('alert', function(data){
 
 var a = Date();
 
-    $('#messages1').append($('<p>').text(a));
-    $('#messages2').append($('<p>').text(data));
+    $('#messages1').prepend($('<p>').text(a));
+    $('#messages2').prepend($('<p>').text(data));
  });
