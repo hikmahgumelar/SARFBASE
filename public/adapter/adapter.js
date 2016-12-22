@@ -1,4 +1,4 @@
-var target = 'http://localhost'
+var target = 'http://103.225.88.36'
 var port = '12345'
 var socket = io(target+':'+port)
 var pesan = "data dari client"	
