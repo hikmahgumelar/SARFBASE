@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var mon = require('./routes/monitor');
-var app = express();
+var per = require('./routes/perintah');
+var app = express(); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/mon', mon);
-
+app.use('/perintah', per);
 // catch 404 and forward to error handlerh
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

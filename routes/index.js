@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
  // console.log('ada yang konek');
 //io.emit('alert', 'ping dari server');  
 
-res.render('index', { title: 'Express' });
+res.render('index', { title: 'Smart Building' });
 //});
 });
 module.exports = router;

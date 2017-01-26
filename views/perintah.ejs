@@ -1,0 +1,18 @@
+<% include ../partial/atas %>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<% include ../partial/status %>
+<div class="container pull-left">
+<p> <label class="checkbox-inline">
+  <input type="checkbox" data-toggle="toggle" id="lampu"> LAMPU
+    </label> </p> 
+<p> <label class="checkbox-inline">
+  <input type="checkbox" data-toggle="toggle" id="accentral"> AC Central
+  </label> </p> 
+<p> <label class="checkbox-inline">
+  <input type="checkbox" data-toggle="toggle" id="acruangserver"> AC Ruang Server
+    </label> </p>
+
+<h1>STATUS LAMPU <%=status%></h1>
+</div>
+</body>
+<% include ../partial/bawah %>
