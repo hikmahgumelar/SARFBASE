@@ -9,21 +9,11 @@ jsonfile.readFile(file, function(err, obj) {
 status = obj.light;  
 })
 
-router.get('/', function(req, res, next) {
-res.render('perintah', { title: 'Pengendali perintah' });
-
-});
-
-router.post('/on', function(req, res){
+router.get('/', function(req, res){
+	res.render('perintah', { title: 'Pengendali perintah' });
 	nyala();
 
 });
-router.post('/off', function(req, res){
-	padam();
-
-});
-
-
 
 
 function nyala(){
@@ -32,15 +22,6 @@ obj.light = "on";
 jsonfile.writeFile(file, obj, function (err) {console.error(err)
 });
 };
-
-function padam(){
-var obj = {}
-obj.light = "off";
-jsonfile.writeFile(file, obj, function (err) {console.error(err)
-});
-};
-
-
 
 
 module.exports = router;

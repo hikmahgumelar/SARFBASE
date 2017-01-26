@@ -1,4 +1,4 @@
-<script>
+
 $('#lampu').on('change', function(){
    nyalakan();
   });
@@ -8,6 +8,3 @@ $('#lampu').on('change', function(){
   $('#acruangserver').on('change', function(){
     alert("acruangserver");
   });
-
-
-</script>

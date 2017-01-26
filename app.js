@@ -7,6 +7,13 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var mon = require('./routes/monitor');
 var per = require('./routes/perintah');
+var per1 = require('./routes/per1');
+var per2 = require('./routes/per2');
+var fs = require('fs');
+var jsonfile = require('jsonfile')
+var file = './public/perintah.json';
+
+
 var app = express(); 
 
 // view engine setup
@@ -24,6 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/mon', mon);
 app.use('/perintah', per);
+app.use('/on', per1);
+app.use('/off', per2);
+
+                                                                                                                                 
 // catch 404 and forward to error handlerh
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

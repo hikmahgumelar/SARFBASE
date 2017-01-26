@@ -8,30 +8,14 @@ var file = './public/perintah.json';
 jsonfile.readFile(file, function(err, obj) {
 status = obj.light;  
 })
-
-router.get('/', function(req, res, next) {
-res.render('perintah', { title: 'Pengendali perintah' });
-
-});
-
-router.post('/on', function(req, res){
-	nyala();
-
-});
-router.post('/off', function(req, res){
+router.get('/', function(req, res){
+	res.render('perintah', { title: 'Pengendali perintah' });
 	padam();
 
 });
 
 
 
-
-function nyala(){
-var obj = {}
-obj.light = "on";
-jsonfile.writeFile(file, obj, function (err) {console.error(err)
-});
-};
 
 function padam(){
 var obj = {}
