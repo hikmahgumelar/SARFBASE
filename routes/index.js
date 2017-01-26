@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var socket = require('socket.io-client')('http://localhost:12345');
+var socket = require('socket.io-client')('http://103.225.88.36:12345');
 var fs = require('fs');
 var jsonfile = require('jsonfile')
 var file = './public/perintah.json';
