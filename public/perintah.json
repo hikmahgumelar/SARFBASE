@@ -1,5 +1,1 @@
-{"site":
- 	[{"id":"1","light":"off","genset":"off","AC":"off"},
-	{"id":"2","light":"off","genset":"off","AC":"off"},
-	{"id":"3","light":"off","genset":"off","AC":"off"}]
-}
+{"light":"on"}
