@@ -18,10 +18,12 @@ router.get('/mon', function(req, res, next) {
 /* Halaman Perintah */
 
 router.get('/perintah', function(req, res){
-	res.render('perintah', { title:"Perintah Pengendali" ,status: file.light });
+	jsonfile.readFile(file, function(err, obj){
+	res.render('perintah', { title:"Perintah Pengendali" ,status: obj.light });
 var tombolon = req.query.tombolon;
 var tombolof = req.query.tombolof;
 
+});
 });
 
 /* Perintah ON */
