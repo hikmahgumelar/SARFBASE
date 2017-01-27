@@ -5,10 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
+<<<<<<< HEAD
 var mon = require('./routes/monitor');
 var app = express();
 var jsonfile = require('jsonfile');
 var file = './public/perintah.json';
+=======
+var fs = require('fs');
+var jsonfile = require('jsonfile')
+var file = './public/perintah.json';
+
+
+var app = express(); 
+>>>>>>> 4a946872a9ca25a5f09f91861abc9d79986d0326
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,8 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/mon', mon);
-
+                                                                                                                                 
 // catch 404 and forward to error handlerh
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
