@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var mon = require('./routes/monitor');
 var app = express();
+var jsonfile = require('jsonfile');
+var file = './public/perintah.json';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
