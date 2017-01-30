@@ -21,7 +21,7 @@ router.get('/mon', function(req, res, next) {
 
 router.get('/perintah', function(req, res){
 	jsonfile.readFile(file, function(err, obj){
-	res.render('perintah', { title:"Perintah Pengendali" ,status: obj.light });
+	res.render('perintah', { title:"Perintah Pengendali" ,status: obj.data[0].light });
 
 
 });
@@ -54,19 +54,19 @@ console.log(isinya);
 /* Fungsi menyalakan dan mematikan*/
 
 function nyala(){
-var obj = {}
-obj.light = "on";
+jsonfile.readFile(file, function(err, obj) {
+obj.data[0].light = "on";
 jsonfile.writeFile(file, obj, function (err) {console.error(err)
+});
 });
 };
 
 function padam(){
-var obj = {}
-obj.light = "off";
+jsonfile.readFile(file, function(err, obj) {
+obj.data[0].light = "off";
 jsonfile.writeFile(file, obj, function (err) {console.error(err)
 });
+});
 };
-
-
 
 module.exports = router;
