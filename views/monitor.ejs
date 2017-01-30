@@ -1,14 +1,41 @@
 <% include ../partial/atas %>
-
-<div class="container">
-<div class="form">
-
-<h2>    Sensor Tes : </h2>
-
-</div>
-</div>
-
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <% include ../partial/status %>
+<div class="container pull-left">
+<div class="form">
+<script src="/adapter/adapter.js"></script>
+
+<body>
+      <table class="table table-striped" >
+      <thead>
+      	<tr>
+      		<th>Tanggal</th>
+            <th>Status Sensor</th>
+
+       
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+        	<td id=messages1 ></td>
+        	<td id=messages2 ></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	
+        </tr>
+      </tbody>
+  	  </table>
+
+
+</div>
+</div>
+</body>
+
 
 
 <% include ../partial/bawah %>
