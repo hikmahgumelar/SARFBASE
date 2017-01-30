@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var socket = require('socket.io-client')('http://103.225.88.36:12345');
+var bodyParser = require('body-parser');
+var socket = require('socket.io-client')('http://localhost:12345');
 var fs = require('fs');
 var jsonfile = require('jsonfile')
 var file = './public/perintah.json';
-
+var app = express();
+app.use(bodyParser.json());
 //var io = require('socket.io')(12345)
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,8 +22,7 @@ router.get('/mon', function(req, res, next) {
 router.get('/perintah', function(req, res){
 	jsonfile.readFile(file, function(err, obj){
 	res.render('perintah', { title:"Perintah Pengendali" ,status: obj.light });
-var tombolon = req.query.tombolon;
-var tombolof = req.query.tombolof;
+
 
 });
 });
@@ -31,20 +32,23 @@ var tombolof = req.query.tombolof;
 router.get('/on', function(req, res){
 	nyala();
 	jsonfile.readFile(file, function(err, obj) {
-res.render('perintah', { title:"Perintah Pengendali" ,status: obj.light });
+
 });	
 });
 
 /* Perintah OFF*/
 
 router.get('/off', function(req, res){
-		padam();
-  jsonfile.readFile(file, function(err, obj) {
-res.render('perintah', { title:"Perintah Pengendali" ,status: obj.light });
+padam();
+jsonfile.readFile(file, function(err, obj) {
 });		
 });
 
 
+router.get('/test', function(req, res){
+var isinya = req.body.site;
+console.log(isinya);
+});
 /* Fungsi menyalakan dan mematikan*/
 
 function nyala(){

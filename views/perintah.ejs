@@ -2,21 +2,26 @@
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 
 <section class="content">
+<div class="col-xs-2" align="centre">
+<select class="form-control" name="site">
+	<option value="site1"><h2>site 1</h2></option>
+	<option value="site2"><h2>site 2</h2></option>
+</select>
 <h1>LAMPU <%=status%></h1>
 <a href="/on"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
 <a href="/off"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br>
 <hr>
 <h1>GENSET <%=status%></h1>
-<a href="/on"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
-<a href="/off"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br>
+<a href="#"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
+<a href="#"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br>
 <hr>
 <h1>AC <%=status%></h1>
-<a href="/on"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
-<a href="/off"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br>
+<a href="#"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
+<a href="#"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a>
+</section>
+</div>
 </section>
 
-
-<% include ../partial/status %>
 <% include ../partial/bawah %>
 
 <!--//  $('#lampu').on('change', function(){
