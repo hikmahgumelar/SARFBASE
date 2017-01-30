@@ -34,6 +34,7 @@ router.get('/on', function(req, res){
 	jsonfile.readFile(file, function(err, obj) {
 
 });	
+	res.redirect('/perintah');
 });
 
 /* Perintah OFF*/
@@ -42,6 +43,7 @@ router.get('/off', function(req, res){
 padam();
 jsonfile.readFile(file, function(err, obj) {
 });		
+	res.redirect('/perintah');	
 });
 
 
