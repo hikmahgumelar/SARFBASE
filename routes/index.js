@@ -21,7 +21,21 @@ router.get('/mon', function(req, res, next) {
 
 router.get('/perintah', function(req, res){
 	jsonfile.readFile(file, function(err, obj){
-	res.render('perintah', { title:"Perintah Pengendali" , status: obj.data[0].light  });
+	var warna;
+	
+	if (obj.data[0].light=="on"){
+     
+     warna = "red";
+	 
+	}else{
+     
+     warna = "black";
+
+	}
+
+
+
+	res.render('perintah', { title:"Perintah Pengendali" , status: warna  });
 
 
 });
