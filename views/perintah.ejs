@@ -1,36 +1,18 @@
 <% include ../partial/atas %>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-
 <section class="content">
-<div class="col-xs-2" align="centre">
-<select class="form-control" name="site">
-	<option value="site1"><h2>site 1</h2></option>
-	<option value="site2"><h2>site 2</h2></option>
-</select>
-<h1>LAMPU <%=status%></h1>
-<a href="/on"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
-<a href="/off"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br>
-<hr>
-<h1>GENSET <%=status%></h1>
-<a href="#"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
-<a href="#"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br>
-<hr>
-<h1>AC <%=status%></h1>
-<a href="#"><button type="button" class="btn btn-primary" name="tombolon">ON</button></a>
-<a href="#"><button type="button" class="btn btn-primary" name="tombolof" >OFF</button></a>
-</section>
-</div>
-</section>
+<table>
+	<tbody>
+		<tr>
+			<td><h1>GENSET</h1></td><td><svg height="100" width="100">
 
+  <circle id="bulat1" cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill=<%=status%> /></circle>
+</svg></td>
+</tr>
+<tr>
+			<td colspan="2"><a href="/on"><button onclick=bulat1.style.fill="red" type="button" class="btn btn-primary" name="tombolon">ON</button></a>
+<a href="/off"><button onclick=bulat1.fill="grey" type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br></td>
+		</tr>
+	</tbody>
+</table>
 <% include ../partial/bawah %>
-
-<!--//  $('#lampu').on('change', function(){
- //   alert("lampu");
-  //});
-  //$('#accentral').on('change', function(){
-   // alert("accentral");
- // });
- /// $('#acruangserver').on('change', function(){
-  //  alert("acruangserver");
-  //});
-

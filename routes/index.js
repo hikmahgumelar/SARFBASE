@@ -20,9 +20,16 @@ router.get('/mon', function(req, res, next) {
 /* Halaman Perintah */
 
 router.get('/perintah', function(req, res){
-	jsonfile.readFile(file, function(err, obj){
-	res.render('perintah', { title:"Perintah Pengendali" ,status: obj.light });
+	jsonfile.readFile(file, function(err, obj){		
+if (obj.light=="on"){
 
+var warna = "red";
+console.log(warna);
+} else {
+var warna = "black";
+console.log(warna);
+}	
+	res.render('perintah', { title:"Perintah Pengendali" ,status: warna });
 
 });
 });
