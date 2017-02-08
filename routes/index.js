@@ -20,16 +20,9 @@ router.get('/mon', function(req, res, next) {
 /* Halaman Perintah */
 
 router.get('/perintah', function(req, res){
-	jsonfile.readFile(file, function(err, obj){		
-if (obj.light=="on"){
+	jsonfile.readFile(file, function(err, obj){
+	res.render('perintah', { title:"Perintah Pengendali" , status: obj.data[0].light  });
 
-var warna = "red";
-console.log(warna);
-} else {
-var warna = "black";
-console.log(warna);
-}	
-	res.render('perintah', { title:"Perintah Pengendali" ,status: warna });
 
 });
 });
@@ -62,14 +55,14 @@ console.log(isinya);
 
 function nyala(){
 var obj = {}
-obj.light = "on";
+obj.data[0].light = "on";
 jsonfile.writeFile(file, obj, function (err) {console.error(err)
 });
 };
 
 function padam(){
 var obj = {}
-obj.light = "off";
+obj.data[0].light = "off";
 jsonfile.writeFile(file, obj, function (err) {console.error(err)
 });
 };
