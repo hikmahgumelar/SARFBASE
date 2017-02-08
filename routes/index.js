@@ -54,19 +54,20 @@ console.log(isinya);
 /* Fungsi menyalakan dan mematikan*/
 
 function nyala(){
-var obj = {}
+jsonfile.readFile(file, function(err, obj) {
 obj.data[0].light = "on";
 jsonfile.writeFile(file, obj, function (err) {console.error(err)
+});
 });
 };
 
 function padam(){
-var obj = {}
+jsonfile.readFile(file, function(err, obj) {
 obj.data[0].light = "off";
 jsonfile.writeFile(file, obj, function (err) {console.error(err)
 });
+});
 };
-
 
 
 module.exports = router;
