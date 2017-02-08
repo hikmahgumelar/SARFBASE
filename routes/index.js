@@ -30,21 +30,29 @@ router.get('/mon', function(req, res, next) {
 /* Halaman Perintah */
 
 router.get('/perintah', function(req, res){
-	jsonfile.readFile(file, function(err, obj){
-	res.render('perintah', { title:"Perintah Pengendali" ,status: obj.data[0].light });
+	jsonfile.readFile(file, function(err, obj){		
+if (obj.light=="on"){
 
+warna = "red";
+console.log	(warna);
+return;
+}
+warna = "black";
+console.log(warna);
+	res.render('perintah', { title:"Perintah Pengendali" ,status: warna });
 
 });
 });
+
 
 /* Perintah ON */
 
 router.get('/on', function(req, res){
 	nyala();
 	jsonfile.readFile(file, function(err, obj) {
-
 });	
-	res.redirect('/perintah');
+	 res.redirect("/perintah");
+
 });
 
 /* Perintah OFF*/
@@ -53,7 +61,8 @@ router.get('/off', function(req, res){
 padam();
 jsonfile.readFile(file, function(err, obj) {
 });		
-	res.redirect('/perintah');	
+	 res.redirect("/perintah");
+	
 });
 
 
