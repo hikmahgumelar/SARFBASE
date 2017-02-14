@@ -1,6 +1,15 @@
 <% include ../partial/atas %>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="../adapter/adapter.js"></script>
+<div class="box box-primary">
 <section class="content">
+  <form action="/pilih" method="post" id="menuForm" name="menuForm" enctype="application/x-www-form-urlencoded">
+          <select id="select1" onchange="pilih()" name="select1">
+            <option value="0" selected="selected">Pilih Site</option>
+            <option value="1">Site A</option>
+            <option value="2">Site B</option>
+          </select>
+        </form>
 <table>
 	<tbody>
 		<tr>
@@ -10,9 +19,11 @@
 </svg></td>
 </tr>
 <tr>
-			<td colspan="2"><a href="/on"><button onclick=bulat1.style.fill="red" type="button" class="btn btn-primary" name="tombolon">ON</button></a>
+<td colspan="2">
+<a href="/on"><button onclick=bulat1.style.fill="red" type="button" class="btn btn-primary" name="tombolon">ON</button></a>
 <a href="/off"><button onclick=bulat1.fill="grey" type="button" class="btn btn-primary" name="tombolof" >OFF</button></a><br></td>
-		</tr>
-	</tbody>
+</tr>
+</tbody>
 </table>
+</div>
 <% include ../partial/bawah %>
