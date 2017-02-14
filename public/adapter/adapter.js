@@ -14,3 +14,11 @@ var a = Date();
     $('#messages2').prepend($('<p>').text(data));
  });
 
+
+
+function pilih() { 
+var a = document.menuForm.select1.value;
+	console.log(a);
+
+};
+

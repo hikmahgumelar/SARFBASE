@@ -28,19 +28,26 @@ router.get('/perintah', function(req, res){
      warna = "red";
 	 
 	}else{
-     
      warna = "black";
-
 	}
 
+	res.render('perintah', { title:"Perintah Pengendali" , status: warna  
 
-
-	res.render('perintah', { title:"Perintah Pengendali" , status: warna  });
-
+,site: "site A"
 
 });
 });
+});
 
+/* Perintah Pilih */
+router.post('/pilih', function(req, res){
+
+function pilih(){
+	console.log("dari router post");
+}
+	
+
+});
 /* Perintah ON */
 
 router.get('/on', function(req, res){
@@ -62,7 +69,7 @@ jsonfile.readFile(file, function(err, obj) {
 
 
 router.get('/test', function(req, res){
-var isinya = req.body.site;
+var isinya = req.body.pilih;
 console.log(isinya);
 });
 /* Fungsi menyalakan dan mematikan*/

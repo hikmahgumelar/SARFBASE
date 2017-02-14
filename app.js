@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
+var perintah = require('./routes/index');
 var fs = require('fs');
 var jsonfile = require('jsonfile')
 var file = './public/perintah.json';
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
                                                                                                                                  
 // catch 404 and forward to error handlerh
 app.use(function(req, res, next) {
