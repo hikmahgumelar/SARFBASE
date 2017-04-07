@@ -15,6 +15,5 @@ var nama_sensor =  req.param('s');
 io.emit('alert', nama_sensor);
 res.send(nama_sensor);
 
-
 });
 });
