@@ -1,7 +1,7 @@
-var target = 'http://103.225.88.36'
+var target = 'http://localhost'
 var port = '12345'
 var socket = io(target+':'+port)
-var pesan = "data dari client"	
+var pesan = "data dari client"
 //socket.on('alert', function(data){
  // console.log(data)
 //document.getElementById("test").innerHTML = data;
@@ -16,9 +16,8 @@ var a = Date();
 
 
 
-function pilih() { 
+function pilih() {
 var a = document.menuForm.select1.value;
 	console.log(a);
 
 };
-
