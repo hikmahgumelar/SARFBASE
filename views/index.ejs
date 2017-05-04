@@ -1,5 +1,24 @@
 <% include ../partial/atas %>
-
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <% include ../partial/status %>
-     
+<section class="content">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nama Depan</th>
+      <th>Nama Belakang</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+<% for (i=0;i<database.length;i++){ %>
+<tr>
+  <td><%= database[i].nama_pertama %></td>
+  <td><%=database[i].nama_terakhir%></td>
+</tr>
+<% } %>
+</tbody>
+</table>
+</section>
+<body>
 <% include ../partial/bawah %>
