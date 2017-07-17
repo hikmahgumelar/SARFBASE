@@ -28,11 +28,11 @@ router.get('/mon', function(req, res, next) {
 });
 
 /* Halaman Perintah */
-
+/*
 router.get('/perintah', function(req, res){
 	jsonfile.readFile(file, function(err, obj){		
 if (obj.light=="on"){
-
+*/
 warna = "red";
 console.log	(warna);
 return;
