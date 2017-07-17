@@ -32,7 +32,7 @@ router.get('/mon', function(req, res, next) {
 router.get('/perintah', function(req, res){
 	jsonfile.readFile(file, function(err, obj){		
 if (obj.light=="on"){
-*/
+
 warna = "red";
 console.log	(warna);
 return;
@@ -44,7 +44,7 @@ console.log(warna);
 });
 });
 
-
+*/
 /* Perintah ON */
 
 router.get('/on', function(req, res){
