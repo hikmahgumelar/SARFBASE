@@ -1,12 +1,10 @@
-var target = 'http://localhost'
+var target = 'http://api-push.ibstower.com'
 var port = '12345'
 var socket = io(target+':'+port)
 var pesan = "data dari client"
-//socket.on('alert', function(data){
- // console.log(data)
-//document.getElementById("test").innerHTML = data;
-//});
-socket.on('pesannih', function(data){
+
+
+socket.on('kirim', function(data){
 var dateObj = new Date();
 var month = dateObj.getMonth() + 1; //months from 1-12
 var day = dateObj.getDate();

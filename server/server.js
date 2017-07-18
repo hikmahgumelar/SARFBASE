@@ -11,10 +11,13 @@ io.on('connection', function(pesan){
 //console.log(pesan);
 // routes will go here
 app.get('/data', function(req, res) {
-var nama_sensor =  req.param('s');
-io.emit('pesannih', nama_sensor);
-res.send(nama_sensor);
+var site =  req.param('s');
+var temp =  req.param('t')
+console.log(site + temp);
+var hasil = site + temp ;
+io.emit('alert', hasil);
+res.send(hasil);
 
-
+ 
 });
 });
