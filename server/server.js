@@ -8,11 +8,11 @@ app.listen(port);
 console.log('Server jalan.....');
 console.log('menungu masukan....');
 io.on('connection', function(pesan){
-console.log(pesan);
+//console.log(pesan);
 // routes will go here
 app.get('/data', function(req, res) {
 var nama_sensor =  req.param('s');
-io.emit('alert', nama_sensor);
+io.emit('pesannih', nama_sensor);
 res.send(nama_sensor);
 
 
