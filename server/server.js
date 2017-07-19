@@ -14,9 +14,8 @@ app.get('/data', function(req, res) {
 var site =  req.param('s');
 var temp =  req.param('t')
 console.log(site + temp);
-var hasil = site + temp ;
-io.emit('alert', hasil);
-res.send(hasil);
+io.emit('transmit', { a: site, b:temp });
+res.send("terkirim");
 
  
 });
