@@ -16,7 +16,6 @@ var	temp =  req.param('b');
 var	hum =   req.param('c');
 var	door =  req.param('d'); 
 var	acpwr = req.param('e'); 
-console.log(site + temp);
 io.emit('transmit', { a: site, b: temp, c: hum, d: door, e: acpwr });
 res.send("terkirim");
 
