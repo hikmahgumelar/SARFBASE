@@ -14,8 +14,14 @@ var menit = dateObj.getMinutes();
 tanggal = day + "/" + month + "/" + year + " Jam :" + jam + ":" + menit + " WIB";
 var site = data.a;
 var temp = data.b;
+var hum = data.c;
+var door = data.d;
+var acpwr = data.e;
 
     $('#date').text(tanggal);
     $('#site').text(site);
     $('#temp').text(temp);
+    $('#hum').text(hum);
+    $('#door').text(door);
+    $('#acpwr').text(acpwr);
  });
