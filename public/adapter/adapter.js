@@ -1,4 +1,4 @@
-var target = 'http://localhost'
+var target = 'http://api-push.ibstower.com'
 var port = '12345'
 var socket = io(target+':'+port)
 var pesan = "data dari client"
