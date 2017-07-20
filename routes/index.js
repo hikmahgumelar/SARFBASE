@@ -23,14 +23,17 @@ router.get('/', function(req, res, next) {
 res.render('index', { title: 'Smart Building' });
 });
 /* Halaman Monitor */
-router.get('/mon', function(req, res, next) {
-	res.render('monitor', { title: 'monitor'});
+router.get('/monitoring', function(req, res, next) {
+	res.render('monitor', { title: 'log monitoring'});
 });
 
+router.get('/mon', function(req, res, next) {
+  res.render('livemonitor', { title: 'Live Monitoring'});
+});
 /* Halaman Perintah */
 /*
 router.get('/perintah', function(req, res){
-	jsonfile.readFile(file, function(err, obj){		
+	jsonfile.readFile(file, function(err, obj){
 if (obj.light=="on"){
 
 warna = "red";
@@ -50,7 +53,7 @@ console.log(warna);
 router.get('/on', function(req, res){
 	nyala();
 	jsonfile.readFile(file, function(err, obj) {
-});	
+});
 	 res.redirect("/perintah");
 
 });
@@ -60,9 +63,9 @@ router.get('/on', function(req, res){
 router.get('/off', function(req, res){
 padam();
 jsonfile.readFile(file, function(err, obj) {
-});		
+});
 	 res.redirect("/perintah");
-	
+
 });
 
 

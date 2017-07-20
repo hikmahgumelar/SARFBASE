@@ -1,41 +1,44 @@
 <% include ../partial/atas %>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-<% include ../partial/status %>
-<div class="container pull-left">
-<div class="form">
 <script src="/adapter/adapter.js"></script>
+<section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title centre" >Status Monitoring</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>NO</th>
+                  <th>TIME</th>
+                  <th>SITE</th>
+                  <th>TEMP</th>
+                  <th>HUM</th>
+                  <th>DOOR</th>
+                  <th>AC PWR</th>
+                </tr>
+              </thead>
+                <tbody>
+                <tr>
+                  <td></td>
+                  <td id=date></td>
+                  <td id=site></td>
+                  <td id=temp></td>
+                  <td id=hum></td>
+                  <td id=door></td>
+                  <td id=acpwr></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 
-<body>
-      <table class="table table-striped" >
-      <thead>
-      	<tr>
-      		<th>Tanggal</th>
-            <th>Status Sensor</th>
-
-       
-        </tr>
-      </thead>
-       <tbody>
-        <tr>
-        	<td id=messages1 ></td>
-        	<td id=messages2 ></td>
-        	<td></td>
-        	<td></td>
-        	<td></td>
-        	<td></td>
-        	<td></td>
-        	<td></td>
-        	<td></td>
-        	
-        </tr>
-      </tbody>
-  	  </table>
-
-
-</div>
-</div>
-</body>
-
-
-
+    </p>
 <% include ../partial/bawah %>

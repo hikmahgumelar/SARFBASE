@@ -8,13 +8,18 @@ app.listen(port);
 console.log('Server jalan.....');
 console.log('menungu masukan....');
 io.on('connection', function(pesan){
-console.log(pesan);
+//console.log(pesan);
 // routes will go here
 app.get('/data', function(req, res) {
-var nama_sensor =  req.param('s');
-io.emit('alert', nama_sensor);
-res.send(nama_sensor);
+var site =  req.param('a');
+var	temp =  req.param('b');
+var	hum =   req.param('c');
+var	door =  req.param('d'); 
+var	acpwr = req.param('e'); 
+console.log(site + temp);
+io.emit('transmit', { a: site, b: temp, c: hum, d: door, e: acpwr });
+res.send("terkirim");
 
-
+ 
 });
 });
