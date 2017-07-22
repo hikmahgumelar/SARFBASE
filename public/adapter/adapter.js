@@ -1,7 +1,6 @@
 var target = 'http://localhost'
 var port = '12345'
 var socket = io(target+':'+port)
-var pesan = "data dari client"
 
 
 socket.on('transmit', function(data){
@@ -20,18 +19,11 @@ var acpwr = data.e;
 
 var arr = ['tutup','buka'];
 //descdoor = arr[door];
-/*switch (door){
-	case "1":
-		door = "Buka"
-		break;
-	case "0":
-		door = "Tutup"
-		break;
-};*/
+
     $('#date').text(tanggal);
     $('#site').text(site);
-    $('#temp').text(temp + " Celcius");
+    $('#temp').text(temp);
     $('#hum').text(hum);
     $('#door').text(arr[door]);
-    $('#acpwr').text(acpwr + " Volt");
+    $('#acpwr').text(acpwr);
  });

@@ -16,7 +16,10 @@ var	temp =  req.param('b');
 var	hum =   req.param('c');
 var	door =  req.param('d'); 
 var	acpwr = req.param('e'); 
-io.emit('transmit', { a: site, b: temp, c: hum, d: door, e: acpwr });
+var arrdata1 = { a: site, b: temp, c: hum, d: door, e: acpwr }
+var arrdata2 = { a: site, b: temp, c: hum, d: door, e: acpwr }
+var data = [arrdata1, arrdata2];
+io.emit('transmit', data[0]);
 res.send("terkirim");
 
  
