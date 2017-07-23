@@ -11,16 +11,17 @@ io.on('connection', function(pesan){
 //console.log(pesan);
 // routes will go here
 app.get('/data', function(req, res) {
+var id = 	req.param('id');
 var site =  req.param('a');
 var	temp =  req.param('b');
 var	hum =   req.param('c');
 var	door =  req.param('d'); 
 var	acpwr = req.param('e'); 
-var arrdata1 = { a: site, b: temp, c: hum, d: door, e: acpwr }
-var arrdata2 = { a: site, b: temp, c: hum, d: door, e: acpwr }
+var arrdata1 = { a: 'site0', b: temp, c: hum, d: door, e: acpwr }
+var arrdata2 = { a: 'site1', b: temp, c: hum, d: door, e: acpwr }
 var data = [arrdata1, arrdata2];
-io.emit('transmit', data[0]);
-res.send("terkirim");
+io.emit('transmit', data);
+res.send(data);
 
  
 });

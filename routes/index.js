@@ -1,32 +1,27 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var socket = require('socket.io-client')('http://103.225.88.36:12345');
-var fs = require('fs');
-var jsonfile = require('jsonfile')
-var file = './public/perintah.json';
+var socket = require('socket.io-client')('http://localhost:12345');
 var app = express();
 app.use(bodyParser.json());
 //var io = require('socket.io')(12345)
 
 /* server */
 // routes will go here
-router.get('/data', function(req, res) {
-var nama_sensor =  req.param('s');
-io.emit('alert', nama_sensor);
-res.send(nama_sensor);
 
+socket.on('transmit', function (data) {
+
+var getdata = data;
 });
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
 res.render('index', { title: 'Smart Building' });
 });
 /* Halaman Monitor */
 router.get('/monitoring', function(req, res, next) {
-	res.render('monitor', { title: 'log monitoring'});
-});
 
+	res.render('monitor', { title: 'log monitoring' });
+});
 router.get('/mon', function(req, res, next) {
   res.render('livemonitor', { title: 'Live Monitoring'});
 });

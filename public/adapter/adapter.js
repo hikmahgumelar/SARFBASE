@@ -19,11 +19,13 @@ var acpwr = data.e;
 
 var arr = ['tutup','buka'];
 //descdoor = arr[door];
-
-    $('#date').text(tanggal);
-    $('#site').text(site);
-    $('#temp').text(temp);
-    $('#hum').text(hum);
-    $('#door').text(arr[door]);
-    $('#acpwr').text(acpwr);
+var datajumlah = data.length;
+for (var i=0; i<datajumlah;i++){
+    $('#tanggal').append(tanggal);
+    $('#site').append(data[i].a);
+    $('#temp').append(data[i].b);
+    $('#hum').append(data[i].c);
+    $('#door').append(arr[data[i].d]);
+    $('#acpwr').append(data[i].e);
+}
  });
