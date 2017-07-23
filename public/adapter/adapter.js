@@ -19,13 +19,23 @@ var acpwr = data.e;
 
 var arr = ['tutup','buka'];
 //descdoor = arr[door];
+
 var datajumlah = data.length;
-for (var i=0; i<datajumlah;i++){
-    $('#tanggal').append(tanggal);
-    $('#site').append(data[i].a);
-    $('#temp').append(data[i].b);
-    $('#hum').append(data[i].c);
-    $('#door').append(arr[data[i].d]);
-    $('#acpwr').append(data[i].e);
-}
+var id =[];
+//iot1
+    $('#id0').text(id);
+    $('#tanggal0').text(data[i].tanggal);
+    $('#site0').text(data[id].a);
+    $('#temp0').text(data[id].b);
+    $('#hum0').text(data[id].c);
+    $('#door0').text(arr[data[id].d]);
+    $('#acpwr0').text(data[id].e);
+//iot2
+    $('#id0').text(id);
+    $('#tanggal0').text(tanggal);
+    $('#site0').text(data[id].a);
+    $('#temp0').text(data[id].b);
+    $('#hum0').text(data[id].c);
+    $('#door0').text(arr[data[id].d]);
+    $('#acpwr0').text(data[id].e);
  });
