@@ -15,7 +15,9 @@ socket.on('transmit', function (data) {
 
 var getdata = data;
 });
+
 /* GET home page. */
+
 router.get('/', function(req, res, next) {
 res.render('index', { title: 'Smart Building' });
 });
@@ -24,6 +26,7 @@ router.get('/monitoring', function(req, res, next) {
 iot.find({}, function(err, data){
 
 	res.render('monitor', { title: 'log monitoring', data: data});
+
 });
 });
 router.get('/mon', function(req, res, next) {

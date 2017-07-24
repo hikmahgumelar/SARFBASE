@@ -1,5 +1,6 @@
 <% include ../partial/atas %>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="/adapter/adapter.js"></script>
 
 <section class="content">
       <div class="row">
@@ -10,7 +11,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
+              <table class="table table-bordered" >
                 <thead>
                 <tr>
                   <th style="text-align: center;">ID</th>
@@ -25,11 +26,11 @@
       <% var arrdata = ['CLOSE','OPEN']; %>
       <% for (var i=0; i<data.length;i++){ %>
 
-               <tbody>
-                <tr>
+               <tbody >
+                <tr >
                 <th style="text-align: center;"><%= data[i].id %></th>
                   <th style="text-align: center;"><%= data[i].tanggal %></th>
-                  <th style="text-align: center;"><%= data[i].site %></th>
+                  <th  style="text-align: center;"><%= data[i].site %></th>
                   <th style="text-align: center;"><%= data[i].temp %></th>
                   <th style="text-align: center;"><%= data[i].hum %></th>
                   <th style="text-align: center;"><%= arrdata[data[i].door] %></th>

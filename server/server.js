@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 app.listen(port);
 console.log('Server jalan.....');
 console.log('menungu masukan....');
-//io.on('connection', function(pesan){
+io.on('connection', function(pesan){
 mongo.init();
 //console.log(pesan);
 // routes will go here
@@ -36,15 +36,18 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggalformat, site: site, temp: 
   if (err) {
     console.log(id);
   }else{
+
    console.log('product berhasil di tambah');
    res.send(id + 'berhasil di update');
+  io.emit('transmit', 'datakirim'); 
 }
 });
-
+});
+});
 //var arrdata1 = { id: id, tanggal1: tanggal, a: site, b: temp, c: hum, d: door, e: acpwr }
 //var arrdata2 = { id: id, tanggal1: tanggal, a: site, b: temp, c: hum, d: door, e: acpwr }
 //var data = [arrdata1, arrdata2];
-//io.emit('transmit', data);
+//
 //res.send(data[id]);
 //});
 //NewIot.save(function (err){
@@ -52,7 +55,7 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggalformat, site: site, temp: 
 //	console.log('tidak dapat update');
 //}else{
 //	console.log('update Suksess...')
-});
+
 //}); 
 
 //});
