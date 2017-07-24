@@ -22,23 +22,22 @@ var jam = dateObj.getHours();
 var menit = dateObj.getMinutes();
 tanggalformat = day + "/" + month + "/" + year + " Jam  " + jam + ":" + menit + " WIB";
 
-var NewIot = new iot({
+//var NewIot = new iot({
 
-id : 	req.param('id'),
-tanggal : tanggalformat,
-site : req.param('a'),
-temp :  req.param('b'),
-hum :  req.param('c'),
-door :  req.param('d'), 
-acpwr : req.param('e')
-});
+var id = 	req.param('id'),
+tanggal = tanggalformat,
+site = req.param('a'),
+temp =  req.param('b'),
+hum =  req.param('c'),
+door =  req.param('d'), 
+acpwr = req.param('e');
 
-NewIot.save(function (err){
+iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggalformat, site: site, temp: temp, hum: hum, door: door, acpwr: acpwr}}, { new: true}, function (err ,doc){
   if (err) {
-    console.log("tidak dapat di simpan");
+    console.log(id);
   }else{
    console.log('product berhasil di tambah');
-   res.send('mantap');
+   res.send(id + 'berhasil di update');
 }
 });
 

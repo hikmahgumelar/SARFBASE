@@ -1,6 +1,6 @@
 <% include ../partial/atas %>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-<script src="/adapter/adapter.js"></script>
+
 <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -22,27 +22,21 @@
                   <th style="text-align: center;">AC PWR (Volt)</th>
                 </tr>
               </thead>
+      <% var arrdata = ['CLOSE','OPEN']; %>
+      <% for (var i=0; i<data.length;i++){ %>
+
                <tbody>
                 <tr>
-                <td id=id0 style="text-align: center;"></td>
-                <td id=tanggal0 style="text-align: center;"></td>
-                <td id=site0 style="text-align: center;"></td>
-                <td id=temp0 style="text-align: center;"></td>
-                <td id=hum0 style="text-align: center;"></td>
-                <td id=door0 style="text-align: center;"></td>
-                <td id=acpwr0 style="text-align: center;"></td>
-                </tr>
-                <tr>
-                <td id=id1 style="text-align: center;"></td>
-                <td id=tanggal1 style="text-align: center;"></td>
-                <td id=site1 style="text-align: center;"></td>
-                <td id=temp1 style="text-align: center;"></td>
-                <td id=hum1 style="text-align: center;"></td>
-                <td id=door1 style="text-align: center;"></td>
-                <td id=acpwr1 style="text-align: center;"></td>
+                <th style="text-align: center;"><%= data[i].id %></th>
+                  <th style="text-align: center;"><%= data[i].tanggal %></th>
+                  <th style="text-align: center;"><%= data[i].site %></th>
+                  <th style="text-align: center;"><%= data[i].temp %></th>
+                  <th style="text-align: center;"><%= data[i].hum %></th>
+                  <th style="text-align: center;"><%= arrdata[data[i].door] %></th>
+                  <th style="text-align: center;"><%= data[i].acpwr %></th>
                 </tr>
               </tbody>
-            
+            <% } %>
             </table>
           </div>
         </div>
