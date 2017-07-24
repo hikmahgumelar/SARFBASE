@@ -3,8 +3,17 @@ var port = '12345'
 var socket = io(target+':'+port)
 
 
-socket.on('connection', function(data){
- 
-io.on('transmit',data);
-console.log(data);
-});
+socket.on('transmit', function(data){
+
+console.log(data)
+/*
+//descdoor = arr[door];
+
+    $('#date').text(tanggal);
+    $('#site').text(site);
+    $('#temp').text(temp);
+    $('#hum').text(hum);
+    $('#door').text(arr[door]);
+    $('#acpwr').text(acpwr);
+ */
+ });

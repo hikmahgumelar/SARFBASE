@@ -36,10 +36,12 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggalformat, site: site, temp: 
   if (err) {
     console.log(id);
   }else{
-
+iot.find({},function(err ,docs){
    console.log('product berhasil di tambah');
    res.send(id + 'berhasil di update');
-  io.emit('transmit', 'datakirim'); 
+  io.emit('transmit', docs); 
+
+});
 }
 });
 });

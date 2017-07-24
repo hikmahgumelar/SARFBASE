@@ -2,12 +2,14 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var io = require('socket.io-client');
+var socket = io('http://localhost:12345');
 var mongo = require('../config/mongo');
 var iot = require('../model/iot');
 var app = express();
 app.use(bodyParser.json());
 //var io = require('socket.io')(12345)
-mongo.init();
+
 /* server */
 // routes will go here
 /*
@@ -23,12 +25,13 @@ res.render('index', { title: 'Smart Building' });
 });
 /* Halaman Monitor */
 router.get('/monitoring', function(req, res, next) {
-iot.find({}, function(err, data){
+socket.on('transmit', function (data) {
 
 	res.render('monitor', { title: 'log monitoring', data: data});
+console.log(data);
+});
+});
 
-});
-});
 router.get('/mon', function(req, res, next) {
   res.render('livemonitor', { title: 'Live Monitoring'});
 });
