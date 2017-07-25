@@ -30,8 +30,8 @@ var arr = ['tutup','buka'];
 };*/
     $('#date').text(tanggal);
     $('#site').text(site);
-    $('#temp').text(temp + " Celcius");
+    $('#temp').text(temp);
     $('#hum').text(hum);
     $('#door').text(arr[door]);
-    $('#acpwr').text(acpwr + " Volt");
+    $('#acpwr').text(acpwr);
  });
