@@ -11,11 +11,10 @@ mongo.init();
 /* server */
 // routes will go here
 /*
-socket.on('transmit', function (data) {
-
+//socket.on('transmit', function (data) {
+ 
 var getdata = data;
-});
-
+});*/
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
@@ -32,21 +31,47 @@ iot.find({}, function(err, data){
 router.get('/mon', function(req, res, next) {
   res.render('livemonitor', { title: 'Live Monitoring'});
 });
-/* Halaman Perintah */
-/*
-router.get('/perintah', function(req, res){
-	jsonfile.readFile(file, function(err, obj){
-if (obj.light=="on"){
+router.post('/tambahIoT', function(req, res ,next){
+var iotBaru = new iot({
+    id: req.body.namaid,
+    tanggal: "-",
+    site : req.body.namasite,
+    temp: "0",
+    hum: "0",
+    door: "-",
+    acpwr: "-"
+    });
+    
+ iotBaru.save(function(err){
+ 	if(err){
+ 		console.log('tak dapat di simpan');
+ 	}else{
+ 		console.log('berhasil di simpan');
+ 	}
+      
+ });
+      res.redirect('/tambah');
+    
+ });
+router.get('/tambah', function(req, res){
 
-warna = "red";
-console.log	(warna);
-return;
-}
-warna = "black";
-console.log(warna);
-	res.render('perintah', { title:"Perintah Pengendali" ,status: warna });
-
+  res.render('tambahIoT', {title : 'tambah perangkat IoT' })
 });
+    /* Halaman Perintah */
+    /*
+    router.get('/perintah', function(req, res){
+    	jsonfile.readFile(file, function(err, obj){
+    if (obj.light=="on"){
+    
+    warna = "red";
+    console.log	(warna);
+    return;
+    }
+    warna = "black";
+    console.log(warna);
+    	res.render('perintah', { title:"Perintah Pengendali" ,status: warna });
+    
+    });"
 });
 
 */
