@@ -14,11 +14,18 @@
     "fs": "0.0.1-security",
     "jquery": "^3.1.1",
     "jsonfile": "^2.4.0",
+    "mail": "^0.2.3",
     "mongoose": "^4.10.2",
     "morgan": "~1.7.0",
+    "nodemailer": "^4.0.1",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "sendmail": "^1.1.1",
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.6.0",
     "socket.io-client": "^1.6.0",
     "ws": "^1.1.1"
+  },
+  "engines": {
+    "node": "6.9.4"
   }
 }

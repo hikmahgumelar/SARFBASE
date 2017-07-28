@@ -5,17 +5,42 @@ var mongoose = require('mongoose');
 var mongo = require('../config/mongo');
 var iot = require('../model/iot');
 var app = express();
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 app.use(bodyParser.json());
-//var io = require('socket.io')(12345)
+//mongo inisialisasi
 mongo.init();
-/* server */
-// routes will go here
-/*
-socket.on('transmit', function (data) {
+//set email protokol
+function kirim(){
 
-var getdata = data;
+var transporter = nodemailer.createTransport(smtpTransport('SMTP',{
+    host: '172.21.1.17',
+    port: 465,
+    secure: true,// secure:true for port 465, secure:false for port 587
+    auth: {
+        user: 'hikmah.gumelar@ibstower.com',
+        pass: 'H1kmah1982'
+    },
+    tls: {rejectUnauthorized: false},
+    debug: true
+})
+);
+var mailOptions = {
+    from: '"NOTIFIKASI" <hikmah.gumelar@ibstower.com>', // Pengirim
+    to: 'admin@ibstower.com', // Penerima
+    subject: 'SUHU RUANG SERVER', // Subject Email
+    //text: 'Hello world ?', // plain text body
+    html: '<b>PERINGATAN SUHU RUANG SERVER</b>'  // html body
+};
+
+
+	transporter.sendMail(mailOptions, function (err, info){
+    if (err) {
+    console.log(err);
+    }
+    console.log("email terkirim");
 });
-
+}
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
@@ -31,6 +56,13 @@ iot.find({}, function(err, data){
 });
 router.get('/mon', function(req, res, next) {
   res.render('livemonitor', { title: 'Live Monitoring'});
+});
+
+router.get('/kirim', function(req, res){
+
+kirim();
+
+	res.send(kirim);
 });
 /* Halaman Perintah */
 /*
