@@ -1,6 +1,7 @@
 <% include ../partial/atas %>
 <script src="/adapter/jquery.js"></script>
 <script src="/adapter/adapter.js"></script>
+<script src="/adapter/socket.io.js"></script>
 
 <section class="content" id="table">
       <div class="row">
@@ -24,7 +25,7 @@
                 </tr>
               </thead>
       <% var arrdata = ['CLOSE','OPEN']; %>
-      <% vat arrstat = ['ONLINE','OFFLINE'] %>
+      
       <% for (var i=0; i<data.length;i++){ %>
 
                <tbody >

@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 app.listen(port);
 console.log('Server jalan.....');
 console.log('menungu masukan....');
-//io.on('connection', function(pesan){
+io.on('connection', function(pesan){
 mongo.init();
 //console.log(pesan);
 // routes will go here
@@ -31,7 +31,7 @@ temp =  req.param('b'),
 hum =  req.param('c'),
 door =  req.param('d'), 
 acpwr = req.param('e');
-
+io.emit('transmit', id);
 iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, site: site, temp: temp, hum: hum, door: door, acpwr: acpwr}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);
@@ -40,5 +40,5 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, site: site, temp: temp, 
    res.send(id + ' berhasil di update');
 }
 });
-
+});
 });
