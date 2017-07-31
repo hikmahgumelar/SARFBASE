@@ -8,7 +8,12 @@ var app = express();
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var multer = require('multer');
+
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 //mongo inisialisasi
 mongo.init();
 
@@ -37,26 +42,29 @@ router.get('/mon', function(req, res, next) {
   res.render('livemonitor', { title: 'Live Monitoring'});
 });
 
-router.post('/tambahIoT', function(req, res ,next){
+router.post('/tambahIoT', function(req, res, next){
 var iotBaru = new iot({
-    id: "0003",
-    tanggal: Date.now(),
-    site: "JAKARTA",
-    temp: "0",
-    hum: "0",
-    door: "0",
-    acpwr: "0"
-    });
+    id: req.body.id,
+    tanggal: "N/A",
+    site: req.body.site,
+    temp: "N/A",
+    hum: "N/A",
+    door: "N/A",
+    acpwr: "N/A"
     
+});
+console.log(iotBaru);
  iotBaru.save(function(err){
- 	if(err){
+
+    if(err){
  		console.log('tak dapat di simpan');
  	}else{
  		console.log('berhasil di simpan');
- 	}
+ 	      res.redirect('/tambah');
+    }
       
  });
-      res.redirect('/tambah');
+      
     
  });
 router.get('/tambah', function(req, res){
