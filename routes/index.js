@@ -7,6 +7,7 @@ var iot = require('../model/iot');
 var app = express();
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+var multer = require('multer');
 app.use(bodyParser.json());
 //mongo inisialisasi
 mongo.init();
@@ -41,6 +42,18 @@ var mailOptions = {
     console.log("email terkirim");
 });
 }
+//kirim gambar
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/datagambar')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+ 
+var uploading = multer({ storage: storage })
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
@@ -64,65 +77,10 @@ kirim();
 
 	res.send(kirim);
 });
-/* Halaman Perintah */
-/*
-router.get('/perintah', function(req, res){
-	jsonfile.readFile(file, function(err, obj){
-if (obj.light=="on"){
 
-warna = "red";
-console.log	(warna);
-return;
-}
-warna = "black";
-console.log(warna);
-	res.render('perintah', { title:"Perintah Pengendali" ,status: warna });
-
-});
+router.post('/upload', uploading.single, function (req, res) {
+console.log('ada akses upload');
 });
 
-*/
-/* Perintah ON */
-
-router.get('/on', function(req, res){
-	nyala();
-	jsonfile.readFile(file, function(err, obj) {
-});
-	 res.redirect("/perintah");
-
-});
-
-/* Perintah OFF*/
-
-router.get('/off', function(req, res){
-padam();
-jsonfile.readFile(file, function(err, obj) {
-});
-	 res.redirect("/perintah");
-
-});
-
-
-router.get('/test', function(req, res){
-var isinya = req.body.site;
-console.log(isinya);
-});
-/* Fungsi menyalakan dan mematikan*/
-
-function nyala(){
-jsonfile.readFile(file, function(err, obj) {
-obj.data[0].light = "on";
-jsonfile.writeFile(file, obj, function (err) {console.error(err)
-});
-});
-};
-
-function padam(){
-jsonfile.readFile(file, function(err, obj) {
-obj.data[0].light = "off";
-jsonfile.writeFile(file, obj, function (err) {console.error(err)
-});
-});
-};
 
 module.exports = router;
