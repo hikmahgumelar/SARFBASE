@@ -5,21 +5,22 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
+            <form method="post" action="/tambahIoT" enctype="multipart/form-data">
             <form role="form">
               <div class="box-body">
                 <div class="form-group">
-                  <label id="namaid">ID</label>
-                  <input type="text" class="form-control" id="namaid" placeholder="ID IoT">
+                  <label id="namaid">ID IoT    </label>
+                  <input type="text" name="namaid">
                 </div>
                 <div class="form-group">
-                  <label id="namasite">Site</label>
-                  <input type="text" class="form-control" id="namasite" placeholder="SITE">
+                  <label id="namasite">NAMA SITE</label>
+                  <input type="text" name="namasite">
                 </div>
                
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button href="/tambahIoT" type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
               </div>
             </form>
           </div>
