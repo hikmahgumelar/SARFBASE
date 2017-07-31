@@ -3,8 +3,8 @@ var IotSchema = new mongoose.Schema({
     id: String,
     tanggal: String,
     site : String,
-    temp: Number,
-    hum: Number,
+    temp: String,
+    hum: String,
     door: String,
     acpwr: String
 

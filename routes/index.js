@@ -43,8 +43,10 @@ router.get('/mon', function(req, res, next) {
 });
 
 router.post('/tambahIoT', function(req, res, next){
+  iot.find({}, function(err, data){  
+    var i = data.length;
 var iotBaru = new iot({
-    id: req.body.id,
+    id: "IBST"+i++,
     tanggal: "N/A",
     site: req.body.site,
     temp: "N/A",
@@ -64,14 +66,16 @@ console.log(iotBaru);
     }
       
  });
-      
+});      
     
  });
 router.get('/tambah', function(req, res){
-
-  res.render('tambahIoT', {title : 'tambah perangkat IoT' })
+  iot.find({}, function(err, data){
+var i = data.length;
+var idbaru1 = "IBST"+i++;
+  res.render('tambahIoT', {title : 'tambah perangkat IoT', idbaru: idbaru1 })
 });
-
+});
 
 
 
