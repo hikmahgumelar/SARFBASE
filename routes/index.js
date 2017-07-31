@@ -11,49 +11,15 @@ var multer = require('multer');
 app.use(bodyParser.json());
 //mongo inisialisasi
 mongo.init();
-//set email protokol
-function kirim(){
 
-var transporter = nodemailer.createTransport(smtpTransport('SMTP',{
-    host: '172.21.1.17',
-    port: 465,
-    secure: true,// secure:true for port 465, secure:false for port 587
-    auth: {
-        user: 'hikmah.gumelar@ibstower.com',
-        pass: 'H1kmah1982'
-    },
-    tls: {rejectUnauthorized: false},
-    debug: true
-})
-);
-var mailOptions = {
-    from: '"NOTIFIKASI" <hikmah.gumelar@ibstower.com>', // Pengirim
-    to: 'admin@ibstower.com', // Penerima
-    subject: 'SUHU RUANG SERVER', // Subject Email
-    //text: 'Hello world ?', // plain text body
-    html: '<b>PERINGATAN SUHU RUANG SERVER</b>'  // html body
-};
-
-
-	transporter.sendMail(mailOptions, function (err, info){
-    if (err) {
-    console.log(err);
-    }
-    console.log("email terkirim");
-});
-}
-//kirim gambar
-
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/datagambar')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-})
+/* server */
+// routes will go here
+/*
+//socket.on('transmit', function (data) {
  
-var uploading = multer({ storage: storage })
+var getdata = data;
+});*/
+
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
@@ -70,6 +36,50 @@ iot.find({}, function(err, data){
 router.get('/mon', function(req, res, next) {
   res.render('livemonitor', { title: 'Live Monitoring'});
 });
+
+router.post('/tambahIoT', function(req, res ,next){
+var iotBaru = new iot({
+    id: req.body.namaid,
+    tanggal: "-",
+    site : req.body.namasite,
+    temp: "0",
+    hum: "0",
+    door: "-",
+    acpwr: "-"
+    });
+    
+ iotBaru.save(function(err){
+ 	if(err){
+ 		console.log('tak dapat di simpan');
+ 	}else{
+ 		console.log('berhasil di simpan');
+ 	}
+      
+ });
+      res.redirect('/tambah');
+    
+ });
+router.get('/tambah', function(req, res){
+
+  res.render('tambahIoT', {title : 'tambah perangkat IoT' })
+});
+    /* Halaman Perintah */
+    /*
+    router.get('/perintah', function(req, res){
+    	jsonfile.readFile(file, function(err, obj){
+    if (obj.light=="on"){
+    
+    warna = "red";
+    console.log	(warna);
+    return;
+    }
+    warna = "black";
+    console.log(warna);
+    	res.render('perintah', { title:"Perintah Pengendali" ,status: warna });
+    
+    });"
+});
+>>>>>>> 3f04919889c2b85d0ef2d5129c4c0534c6241844
 
 router.get('/kirim', function(req, res){
 
