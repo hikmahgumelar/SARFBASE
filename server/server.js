@@ -31,12 +31,12 @@ temp =  req.param('b'),
 hum =  req.param('c'),
 door =  req.param('d'), 
 acpwr = req.param('e');
-io.emit('transmit', id);
+//io.emit('transmit', id);
 iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, site: site, temp: temp, hum: hum, door: door, acpwr: acpwr}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);
   }else{
-   console.log('product berhasil di tambah');
+   console.log(id + 'product berhasil di tambah');
    res.send(id + ' berhasil di update');
 }
 });
