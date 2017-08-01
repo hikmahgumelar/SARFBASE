@@ -1,7 +1,7 @@
 <% include ../partial/atas %>
 <script src="/adapter/jquery.js"></script>
+<script src="/adapter/socket.io.js"></script>
 <script src="/adapter/adapter.js"></script>
-
 <section class="content" id="table">
       <div class="row">
         <div class="col-xs-12">
@@ -14,7 +14,7 @@
               <table class="table table-bordered" >
                 <thead>
                 <tr>
-                  <th style="text-align: center;">ID</th>
+                  <th style="text-align: center;">STATUS</th>
                   <th style="text-align: center;">TIME</th>
                   <th style="text-align: center;">SITE</th>
                   <th style="text-align: center;">TEMP (Celcius)</th>
@@ -24,11 +24,12 @@
                 </tr>
               </thead>
       <% var arrdata = ['CLOSE','OPEN']; %>
+      
       <% for (var i=0; i<data.length;i++){ %>
-
+             
                <tbody >
-                <tr >
-                <th style="text-align: center;"><%= data[i].id %></th>
+                <tr>
+                <th style="text-align: center;"><%=  %></th>
                   <th style="text-align: center;"><%= data[i].tanggal %></th>
                   <th  style="text-align: center;"><%= data[i].site %></th>
                   <th style="text-align: center;"><%= data[i].temp %></th>
@@ -38,6 +39,8 @@
                 </tr>
               </tbody>
             <% } %>
+            
+           
             </table>
           </div>
         </div>

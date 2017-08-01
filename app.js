@@ -8,7 +8,7 @@ var index = require('./routes/index');
 var fs = require('fs');
 var jsonfile = require('jsonfile')
 var file = './public/perintah.json';
-
+var multer = require('multer');
 
 var app = express(); 
 
@@ -32,7 +32,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
 
 
 // error handler
