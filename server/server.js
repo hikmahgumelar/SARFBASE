@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 app.listen(port);
 console.log('Server jalan.....');
 console.log('menungu masukan....');
-io.on('connection', function(pesan){
+//io.on('connection', function(pesan){
 mongo.init();
 //console.log(pesan);
 // routes will go here
@@ -41,5 +41,5 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, site: site, temp: temp, 
 }
 });
 });
-});
+//}); penutup iot
 
