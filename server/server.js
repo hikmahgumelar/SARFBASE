@@ -32,7 +32,7 @@ hum =  req.param('c'),
 door =  req.param('d'), 
 acpwr = req.param('e');
 
-iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggalformat, site: site, temp: temp, hum: hum, door: door, acpwr: acpwr}}, { new: true}, function (err ,doc){
+iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, site: site, temp: temp, hum: hum, door: door, acpwr: acpwr}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);
   }else{
