@@ -21,7 +21,9 @@ mongo.init();
 // routes will go here
 /*
 //socket.on('transmit', function (data) {
+
  
+
 var getdata = data;
 });*/
 
@@ -34,6 +36,7 @@ res.render('index', { title: 'Smart Building' });
 router.get('/monitoring', function(req, res, next) {
 iot.find({}, function(err, data){
 
+
 	res.render('monitor', { title: 'log monitoring', data: data});
 
 });
@@ -44,7 +47,7 @@ router.get('/mon', function(req, res, next) {
 
 router.post('/tambahIoT', function(req, res, next){
   iot.find({}, function(err, data){  
-    var i = data.length;
+    var i = data.length + 1;
 var iotBaru = new iot({
     id: "IBST"+i++,
     tanggal: "N/A",
@@ -55,7 +58,6 @@ var iotBaru = new iot({
     acpwr: "N/A"
     
 });
-console.log(iotBaru);
  iotBaru.save(function(err){
 
     if(err){
@@ -71,7 +73,7 @@ console.log(iotBaru);
  });
 router.get('/tambah', function(req, res){
   iot.find({}, function(err, data){
-var i = data.length;
+var i = data.length + 1;
 var idbaru1 = "IBST"+i++;
   res.render('tambahIoT', {title : 'tambah perangkat IoT', idbaru: idbaru1 })
 });
