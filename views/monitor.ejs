@@ -10,8 +10,8 @@
               <h3 class="box-title">Monitoring</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered" >
+            <div class="box-body table-bordered">
+              <table class="table " >
                 <thead>
                 <tr>
                   <th style="text-align: center;">STATUS</th>
@@ -20,16 +20,51 @@
                   <th style="text-align: center;">TEMP (Celcius)</th>
                   <th style="text-align: center;">HUM</th>
                   <th style="text-align: center;">DOOR</th>
-                  <th style="text-align: center;">AC PWR (Volt)</th>
+                  <th style="text-align: center;">VPR(V)</th>
+                  <th style="text-align: center;">VPS(V)</th>
+                  <th style="text-align: center;">VPT(V)</th>
+                  <th style="text-align: center;">Vaccu(DCV)</th>
+                  <th style="text-align: center;">Vrectf(DCV)</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  <th style="text-align: center;">Ir(A)</th>
+                  <th style="text-align: center;">Is(A)</th>
+                  <th style="text-align: center;">It(A)</th>
+                  <th style="text-align: center;">FUEL</th>
+                  <th style="text-align: center;">G_ON</th>
+                  <th style="text-align: center;">G_FAIL</th>
+                  <th style="text-align: center;">DoorRectf</th>
+                  <th style="text-align: center;">DoorGen</th>
+                  <th style="text-align: center;">ARRESTER</th>
+                  <th style="text-align: center;">Brectf</th>
+                  <th style="text-align: center;">MCB Trip</th>
                 </tr>
-              </thead>
+              
       <% var arrdata = ['CLOSE','OPEN']; %>
       
       <% for (var i=0; i<data.length;i++){ %>
-             
+             <thead>
                <tbody >
                 <tr>
                 <th style="text-align: center;"><%=  %></th>
+                  <th style="text-align: center;"><%= data[i].tanggal %></th>
+                  <th  style="text-align: center;"><%= data[i].site %></th>
+                  <th style="text-align: center;"><%= data[i].temp %></th>
+                  <th style="text-align: center;"><%= data[i].hum %></th>
+                  <th style="text-align: center;"><%= arrdata[data[i].door] %></th>
+                  <th style="text-align: center;"><%= data[i].acpwr %></th>
+                  <th style="text-align: center;"><%=  %></th>
+                  <th style="text-align: center;"><%= data[i].tanggal %></th>
+                  <th  style="text-align: center;"><%= data[i].site %></th>
+                </tr>
+                <tbody>
+                  <th style="text-align: center;"><%= data[i].temp %></th>
+                  <th style="text-align: center;"><%= data[i].hum %></th>
+                  <th style="text-align: center;"><%= arrdata[data[i].door] %></th>
+                  <th style="text-align: center;"><%= data[i].acpwr %></th>
+                  <th style="text-align: center;"><%=  %></th>
                   <th style="text-align: center;"><%= data[i].tanggal %></th>
                   <th  style="text-align: center;"><%= data[i].site %></th>
                   <th style="text-align: center;"><%= data[i].temp %></th>
