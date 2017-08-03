@@ -22,7 +22,8 @@ var IotSchema = new mongoose.Schema({
     DoorGen: String,
     ARRESTER: String,
     Brectf: String,
-    MCBTrip: String
+    MCBTrip: String,
+    alamat: String
 
 });
 

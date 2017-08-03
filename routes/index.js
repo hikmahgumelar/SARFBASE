@@ -55,7 +55,25 @@ var iotBaru = new iot({
     temp: "N/A",
     hum: "N/A",
     door: "N/A",
-    acpwr: "N/A"
+    acpwr: "N/A",
+    VPR: "N/A",
+    VPS: "N/A",
+    VPT: "N/A",
+    Vaccu: "N/A",
+    Vrectf: "N/A",
+    Ir: "N/A",
+    Is: "N/A",
+    It: "N/A",
+    FUEL: "N/A",
+    GON: "N/A",
+    GFAIL: "N/A",
+    DoorRectf: "N/A",
+    DoorGen: "N/A",
+    ARRESTER: "N/A",
+    Brectf: "N/A",
+    MCBTrip: "N/A",
+    alamat: req.body.alamat
+                  
     
 });
  iotBaru.save(function(err){
@@ -75,7 +93,7 @@ router.get('/tambah', function(req, res){
   iot.find({}, function(err, data){
 var i = data.length + 1;
 var idbaru1 = "IBST"+i++;
-  res.render('tambahIoT', {title : 'tambah perangkat IoT', idbaru: idbaru1 })
+  res.render('tambahIoT', {title : 'tambah perangkat IoT', idbaru: idbaru1, dataiot: data})
 });
 });
 
