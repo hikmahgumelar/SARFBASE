@@ -15,14 +15,53 @@
                   <label>Nama Site</label>
                   <input type="text" class="form-control" id="site" name="site" placeholder="NAMA SITE">
                 </div>
+                <div class="form-group">
+                  <label>Alamat</label>
+                  <input type="text" class="form-control" id="alamat" name="alamat" placeholder="ALAMAT">
+                </div>
                
               <!-- /.box-body -->
-
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <button type="submit" class="btn btn-primary">Register</button>
               </div>
             </form>
-          </div>
+          
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Perangkat IoT</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box">
+              <table class="table table-bordered table-hover" >
+               <tbody>
+                <tr>
+                  <th style="text-align: center;">NO</th>
+                  <th style="text-align: center;">ID</th>
+                  <th style="text-align: center;">NAMA SITE</th>
+                  <th style="text-align: center;">ALAMAT</th>
+                  <th style="text-align: center;">ACTION</th>
+
+                </tr>
+                 <% for (var i=0;i<dataiot.length;i++){ %>
+                <tr>
+                  <td style="text-align: center;"><%= i+1 %></td>
+                  <td style="text-align: center;"><%= dataiot[i].id %></td>
+                  <td style="text-align: center;"><%= dataiot[i].site %></td>
+                  <td style="text-align: center;"><%= dataiot[i].alamat %></td>
+                  <td style="text-align: center;"><a href="/hapus/<%=dataiot[i]._id%>" class="btn btn-danger">Delete</a>&nbsp;&nbsp;&nbsp;<a href="/<%=dataiot[i]._id%>" class="btn btn-warning">Edit</a>
+                  </td>
+                  
+                </tr>
+                </tbody>
+                <% } %>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
 </form>
 </div>
 
