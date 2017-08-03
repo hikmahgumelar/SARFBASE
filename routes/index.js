@@ -96,6 +96,35 @@ var idbaru1 = "IBST"+i++;
   res.render('tambahIoT', {title : 'tambah perangkat IoT', idbaru: idbaru1, dataiot: data})
 });
 });
+//edit (ambil data sebelum di edit)
+router.get('/:id', function(req, res){
+iot.findById(req.params.id,function(err, dataiot){
+  if(err)
+    console.log("error di cari edit ");
+  iot.find({}, function(err, dataiotfull){ 
+  res.render('edit-iot',{ title: 'edit data IoT',dataiot: dataiot, datafull: dataiotfull});
+});
+});
+//edit (simpan perubahan)
+
+router.post('/perubahan/:id',function(req, res){
+
+  var iotBaru = ({
+      site: req.body.site,
+      harga: req.body.alamat,
+      
+  });
+iot.findByIdAndUpdate(req.params.id, iotBaru, function (err, dataiot){
+   res.redirect('/tambah');
+});
+});
+});
+//hapus Iot Terdaftar
+router.get('/hapus/:id',function(req, res){
+iot.findByIdAndRemove(req.params.id,function(err, dataiot){
+  res.redirect('/tambah');
+  });
+});
 
 
 

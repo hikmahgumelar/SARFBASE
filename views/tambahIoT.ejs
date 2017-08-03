@@ -50,7 +50,9 @@
                   <td style="text-align: center;"><%= dataiot[i].id %></td>
                   <td style="text-align: center;"><%= dataiot[i].site %></td>
                   <td style="text-align: center;"><%= dataiot[i].alamat %></td>
-                  <td style="text-align: center;"></td>
+                  <td style="text-align: center;"><a href="/hapus/<%=dataiot[i]._id%>" class="btn btn-danger">Delete</a>&nbsp;&nbsp;&nbsp;<a href="/<%=dataiot[i]._id%>" class="btn btn-warning">Edit</a>
+                  </td>
+                  
                 </tr>
                 </tbody>
                 <% } %>
