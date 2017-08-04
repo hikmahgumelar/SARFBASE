@@ -100,7 +100,6 @@ var idbaru1 = "IBST"+i++;
 router.get('/:id', function(req, res){
 iot.findById(req.params.id,function(err, dataiot){
   if(err)
-    console.log("error di cari edit ");
   iot.find({}, function(err, dataiotfull){ 
   res.render('edit-iot',{ title: 'edit data IoT',dataiot: dataiot, datafull: dataiotfull});
 });
