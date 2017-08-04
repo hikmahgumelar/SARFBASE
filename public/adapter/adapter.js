@@ -1,7 +1,7 @@
 $(document).ready( function(){
 setInterval(function(){
-   $( "#table" ).load( "/monitoring #table-responsive" );
-}, 1000);
+   $( "#rubah" ).load( "/monitoring #rubah" );
+}, 700);
 });
 
 var target = 'http://localhost'
