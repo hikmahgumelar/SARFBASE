@@ -7,6 +7,7 @@ var IotSchema = new mongoose.Schema({
     temp: String,
     hum: String,
     door: String,
+    acpwr: String,
     VPR: String,
     VPS: String,
     VPT: String,
