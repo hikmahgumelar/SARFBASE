@@ -26,13 +26,50 @@ tanggalformat = day + "/" + month + "/" + year + " Jam  " + jam + ":" + menit + 
 
 var id = 	req.param('id'),
 tanggal = tanggalformat,
-site = req.param('a'),
 temp =  req.param('b'),
 hum =  req.param('c'),
 door =  req.param('d'), 
-acpwr = req.param('e');
+acpwr = req.param('e'),
+VPR =  req.param('f'),
+VPS =  req.param('g'),
+VPT =  req.param('h'),
+Vaccu =  req.param('i'),
+Vrectf=  req.param('j'),
+Ir =  req.param('k'),
+Is =  req.param('l'),
+It =  req.param('m'),
+FUEL =  req.param('n'),
+GON =  req.param('o'),
+GFAIL =  req.param('p'),
+DRectf =  req.param('q'),
+DGen =  req.param('r'),
+ARRSTER =  req.param('s'),
+Brectf =  req.param('t'),
+MCBTrip =  req.param('u');
+  								     
 //io.emit('transmit', id);
-iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, site: site, temp: temp, hum: hum, door: door, acpwr: acpwr}}, { new: true}, function (err ,doc){
+iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, 
+									 temp: temp, 
+									 hum: hum, 
+									 door: door, 
+									 acpwr: acpwr,
+									 VPR: VPR,
+  								     VPS: VPS,
+    								 VPT: VPT,
+                                     Vaccu : Vaccu,
+    								 Vrectf: Vrectf,
+    								 Ir: Ir,
+    								 Is: Is,
+                                     It: It,
+                                     FUEL: FUEL,
+                                     GON: GON,
+                                     GFAIL : GFAIL,
+                                     DRectf: DRectf,
+                                     DGen: DGen,
+                                     ARRSTER: ARRSTER,
+                                     Brectf: Brectf,
+                                     MCBTrip: MCBTrip  
+									}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);
   }else{
