@@ -67,9 +67,9 @@ var iotBaru = new iot({
     FUEL: "N/A",
     GON: "N/A",
     GFAIL: "N/A",
-    DoorRectf: "N/A",
-    DoorGen: "N/A",
-    ARRESTER: "N/A",
+    DRectf: "N/A",
+    DGen: "N/A",
+    ARRSTER: "N/A",
     Brectf: "N/A",
     MCBTrip: "N/A",
     alamat: req.body.alamat
