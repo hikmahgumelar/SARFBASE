@@ -67,9 +67,9 @@ var iotBaru = new iot({
     FUEL: "N/A",
     GON: "N/A",
     GFAIL: "N/A",
-    DoorRectf: "N/A",
-    DoorGen: "N/A",
-    ARRESTER: "N/A",
+    DRectf: "N/A",
+    DGen: "N/A",
+    ARRSTER: "N/A",
     Brectf: "N/A",
     MCBTrip: "N/A",
     alamat: req.body.alamat
@@ -100,7 +100,6 @@ var idbaru1 = "IBST"+i++;
 router.get('/:id', function(req, res){
 iot.findById(req.params.id,function(err, dataiot){
   if(err)
-    console.log("error di cari edit ");
   iot.find({}, function(err, dataiotfull){ 
   res.render('edit-iot',{ title: 'edit data IoT',dataiot: dataiot, datafull: dataiotfull});
 });

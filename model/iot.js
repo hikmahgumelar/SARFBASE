@@ -19,9 +19,9 @@ var IotSchema = new mongoose.Schema({
     FUEL: String,
     GON: String,
     GFAIL : String,
-    DoorRectf: String,
-    DoorGen: String,
-    ARRESTER: String,
+    DRectf: String,
+    DGen: String,
+    ARRSTER: String,
     Brectf: String,
     MCBTrip: String,
     alamat: String

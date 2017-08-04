@@ -10,15 +10,15 @@
               <h3 class="box-title">Monitoring</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box">
-              <table class="table table-bordered table-hover" >
+            <div class="table-responsive">
+              <table class="table table-bordered" >
                 
 
                  <% var arrdata = ['CLOSE','OPEN']; %>
                  <% for (var i=0;i<data.length;i++){ %>
      
                  <tbody>
-                <tr>
+                <tr bgcolor="#B2ABA9">
                   <th style="text-align: center;">STATUS</th>
                   <th style="text-align: center;">NAMA SITE</th>
                   <th style="text-align: center;">TIME</th>
@@ -36,23 +36,23 @@
                  </tr>
                        
                  <tr>                      
-                  <td style="text-align: center;" rowspan="3"></td>
-                  <td style="text-align: center;" rowspan="3"><%= data[i].site %></td>
-                  <td style="text-align: center;" rowspan="3"><%= data[i].tanggal %></td>
+                  <td style="vertical-align: middle;" rowspan="3"></td>
+                  <td style="vertical-align: middle;" rowspan="3"><b><%= data[i].site %></b></td>
+                  <td style="vertical-align: middle;" rowspan="3"><b><%= data[i].tanggal %></b></td>
                   <td style="text-align: center;"><%= data[i].temp %></td>
                   <td style="text-align: center;"><%= data[i].hum %></td>
                   <td style="text-align: center;"><%= arrdata[data[i].door] %></td>
                   <td style="text-align: center;"><%= data[i].acpwr %></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
+                  <td style="text-align: center;"><%= data[i].VPS %></td>
+                  <td style="text-align: center;"><%= data[i].VPT %></td>
+                  <td style="text-align: center;"><%= data[i].Vaccu %></td>
+                  <td style="text-align: center;"><%= data[i].Vrectf %></td>
+                  <td style="text-align: center;"><%= data[i].Ir %></td>
+                  <td style="text-align: center;"><%= data[i].Is %></td>
                 </tr>
 
                 
-                  <tr>
+                  <tr bgcolor="#B2ABA9">
                   <th style="text-align: center;">It(A)</th>
                   <th style="text-align: center;">FUEL</th>
                   <th style="text-align: center;">G_ON</th>
@@ -62,18 +62,19 @@
                   <th style="text-align: center;">ARRESTER</th>
                   <th style="text-align: center;">Brectf</th>
                   <th style="text-align: center;">MCB Trip</th>
+                  <th style="text-align: center;"></th>
             
                 </tr>
                 <tr>      
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
-                  <td style="text-align: center;"></td>
+                  <td style="text-align: center;"><%= data[i].It %></td>
+                  <td style="text-align: center;"><%= data[i].FUEL %></td>
+                  <td style="text-align: center;"><%= data[i].GON %></td>
+                  <td style="text-align: center;"><%= data[i].GFAIL %></td>
+                  <td style="text-align: center;"><%= data[i].DRectf %></td>
+                  <td style="text-align: center;"><%= data[i].DGen %></td>
+                  <td style="text-align: center;"><%= data[i].ARRSTER %></td>
+                  <td style="text-align: center;"><%= data[i].Brectf %></td>
+                  <td style="text-align: center;"><%= data[i].MCBTrip %></td>
                 </tr>
                 <% } %>
               </tbody>
@@ -82,7 +83,11 @@
         </div>
       </div>
     </div>
-    
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
 
-    </p>
+
 <% include ../partial/bawah %>
