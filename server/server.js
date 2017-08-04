@@ -68,7 +68,7 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal,
                                      DGen: DGen,
                                      ARRSTER: ARRSTER,
                                      Brectf: Brectf,
-                                     MCBTrip: MCBTrip  
+                                     MCBTrip: MCBTrip,  
 									}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);

@@ -1,6 +1,6 @@
 $(document).ready( function(){
 setInterval(function(){
-   $( "#table" ).load( "/monitoring #table" );
+   $( "#table" ).load( "/monitoring #table-responsive" );
 }, 1000);
 });
 
