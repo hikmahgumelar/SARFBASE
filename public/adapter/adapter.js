@@ -1,6 +1,6 @@
 $(document).ready( function(){
 setInterval(function(){
-   $( "#rubah" ).load( "/monitoring #rubah" );
+   $( "#table" ).load( "/monitoring #table" );
 }, 700);
 });
 
