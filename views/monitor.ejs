@@ -2,7 +2,11 @@
 <script src="/adapter/jquery.js"></script>
 <script src="/adapter/socket.io.js"></script>
 <script src="/adapter/adapter.js"></script>
+<<<<<<< HEAD
 <section class="content" id="table">
+=======
+<section class="content" id="rubah">
+>>>>>>> f1f4c89b91dfcb442c23047b06d7dec2da89bd74
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -13,8 +17,9 @@
             <div class="table">
               <table class="table table-bordered" >
                 
-
+            
                  <% var arrdata = ['CLOSE','OPEN']; %>
+                 <% var arronoff = ['OFFLINE','ONLINE']; %>
                  <% for (var i=0;i<data.length;i++){ %>
      
                  <tbody>
@@ -36,7 +41,7 @@
                  </tr>
                        
                  <tr>                      
-                  <td style="vertical-align: middle;" rowspan="3"></td>
+      <td style="vertical-align: middle;" rowspan="3"><%= arronoff[data[i].status] %></td>
                   <td style="vertical-align: middle;" rowspan="3"><b><%= data[i].site %></b></td>
                   <td style="vertical-align: middle;" rowspan="3"><b><%= data[i].tanggal %></b></td>
                   <td style="text-align: center;"><%= data[i].temp %></td>
@@ -85,6 +90,7 @@
     </div>
     </div>
     </div>
+    </
     
   
     
