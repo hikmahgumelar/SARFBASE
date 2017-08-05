@@ -1,8 +1,12 @@
 $(document).ready( function(){
 setInterval(function(){
    $( "#rubah" ).load( "/monitoring #rubah" );
+   
+
 }, 700);
 });
+
+
 
 var target = 'http://localhost'
 var port = '12345'

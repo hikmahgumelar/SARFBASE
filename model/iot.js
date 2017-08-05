@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var IotSchema = new mongoose.Schema({
-	stat: String,
     id: String,
     tanggal: String,
     site : String,
@@ -24,8 +23,8 @@ var IotSchema = new mongoose.Schema({
     ARRSTER: String,
     Brectf: String,
     MCBTrip: String,
-    alamat: String
-
+    alamat: String,
+    status: String
 });
 
 module.exports = mongoose.model('iot', IotSchema);

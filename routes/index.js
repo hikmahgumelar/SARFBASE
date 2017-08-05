@@ -17,6 +17,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //mongo inisialisasi
 mongo.init();
 
+var minutes = 1, the_interval = minutes * 60 * 1000;
+setInterval(function() {
+console.log("update auto  ");
+iot.update({}, { $set:{ "status" : "0" } }, { multi : true },function (err ,doc){});
+}, 180000);
+
+
 /* server */
 // routes will go here
 /*
@@ -36,8 +43,7 @@ res.render('index', { title: 'Smart Building' });
 router.get('/monitoring', function(req, res, next) {
 iot.find({}, function(err, data){
 
-
-	res.render('monitor', { title: 'log monitoring', data: data});
+  res.render('monitor', { title: 'log monitoring', data: data});
 
 });
 });
@@ -72,7 +78,9 @@ var iotBaru = new iot({
     ARRSTER: "N/A",
     Brectf: "N/A",
     MCBTrip: "N/A",
-    alamat: req.body.alamat
+    alamat: req.body.alamat,
+    status: "N/A",
+
                   
     
 });
@@ -124,7 +132,6 @@ iot.findByIdAndRemove(req.params.id,function(err, dataiot){
   res.redirect('/tambah');
   });
 });
-
 
 
 module.exports = router;

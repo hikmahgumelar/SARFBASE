@@ -14,6 +14,7 @@ mongo.init();
 //console.log(pesan);
 // routes will go here
 app.get('/data', function(req, res) {
+var ol = Date.now();
 var dateObj = new Date();
 var month = dateObj.getMonth() + 1; //months from 1-12
 var day = dateObj.getDate();
@@ -45,8 +46,8 @@ DRectf =  req.param('q'),
 DGen =  req.param('r'),
 ARRSTER =  req.param('s'),
 Brectf =  req.param('t'),
-MCBTrip =  req.param('u');
-  								     
+MCBTrip =  req.param('u'),
+stat = ol;  								     
 //io.emit('transmit', id);
 iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, 
 									 temp: temp, 
@@ -68,13 +69,14 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal,
                                      DGen: DGen,
                                      ARRSTER: ARRSTER,
                                      Brectf: Brectf,
-                                     MCBTrip: MCBTrip,  
+                                     MCBTrip: MCBTrip,
+                                     status: "1"  
 									}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);
   }else{
-   console.log(id + 'product berhasil di tambah');
-   res.send(id + ' berhasil di update');
+   console.log(id + 'product berhasil di tambah' + stat);
+   res.send(id + ' berhasil di update'  );
 }
 });
 });
