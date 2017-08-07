@@ -5,13 +5,28 @@ var io = require('socket.io')(12345);
 var iot = require('../model/iot');
 var mongo = require('../config/mongo');
 var mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
 // start the server
 app.listen(port);
 console.log('Server jalan.....');
 console.log('menungu masukan....');
 //io.on('connection', function(pesan){
 mongo.init();
-//console.log(pesan);
+//initialisais mail
+var transporter = nodemailer.createTransport({
+    host: 'mail.ibstower.com',
+    port: 465,
+    secure: true, // use TLS
+    auth: {
+        user: 'hikmah.gumelar@ibstower.com',
+        pass: 'H1kmah1982'
+    },
+    tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
+    }
+});
+
 // routes will go here
 app.get('/data', function(req, res) {
 var ol = Date.now();
@@ -77,6 +92,24 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal,
   }else{
    console.log(id + 'product berhasil di tambah' + stat);
    res.send(id + ' berhasil di update'  );
+	message = {	
+    from: '"RUANG SERVER" <ruangserver@ibstower.com>', // listed in rfc822 message header
+    to: 'it.nis@ibstower.com,eko.nurmansyah@ibstower.com',
+    subject: 'PERINGATAN RUANG SERVER '+ temp + ' Derajat Celcius',
+    html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
+	};
+
+if (temp > 34 ){
+
+transporter.sendMail(message, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+
+}
 }
 });
 });
