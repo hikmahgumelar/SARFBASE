@@ -3,6 +3,7 @@ var app = express();
 var port = process.env.PORT || 8888;
 var io = require('socket.io')(12345);
 var iot = require('../model/iot');
+var log = require('../model/log');
 var mongo = require('../config/mongo');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
@@ -108,9 +109,49 @@ transporter.sendMail(message, function(error, info){
     console.log('Email sent: ' + info.response);
   }
 });
+}
+}
+var logBaru = new log({
+    id: id,
+    site: iot.find({id},{site}),
+    tanggal: tanggal,
+    temp: temp,
+    hum: hum,
+    door: door,
+    acpwr: acpwr,
+    VPR: VPR,
+    VPS: VPS,
+    VPT: VPT,
+    Vaccu: Vaccu,
+    Vrectf: Vrectf,
+    Ir: Ir,
+    Is: Is,
+    It: It,
+    FUEL: FUEL,
+    GON: GON,
+    GFAIL: GFAIL,
+    DRectf: DRectf,
+    DGen: DGen,
+    ARRSTER: ARRSTER,
+    Brectf: Brectf,
+    MCBTrip: MCBTrip,
+   
 
-}
-}
+                  
+    
+});
+ logBaru.save(function(err){
+
+    if(err){
+ 		console.log('tak dapat di simpan');
+ 	}else{
+ 		console.log('berhasil di simpan');
+    }
+      
+ });
+
+
+
 });
 });
 //}); penutup iot
