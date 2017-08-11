@@ -3,6 +3,7 @@ var app = express();
 var port = process.env.PORT || 8888;
 var io = require('socket.io')(12345);
 var iot = require('../model/iot');
+var log = require('../model/log');
 var mongo = require('../config/mongo');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
@@ -64,29 +65,9 @@ Brectf =  req.param('t'),
 MCBTrip =  req.param('u'),
 stat = ol;  								     
 //io.emit('transmit', id);
-iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, 
-									 temp: temp, 
-									 hum: hum, 
-									 door: door, 
-									 acpwr: acpwr,
-									 VPR: VPR,
-  								     VPS: VPS,
-    								 VPT: VPT,
-                                     Vaccu : Vaccu,
-    								 Vrectf: Vrectf,
-    								 Ir: Ir,
-    								 Is: Is,
-                                     It: It,
-                                     FUEL: FUEL,
-                                     GON: GON,
-                                     GFAIL : GFAIL,
-                                     DRectf: DRectf,
-                                     DGen: DGen,
-                                     ARRSTER: ARRSTER,
-                                     Brectf: Brectf,
-                                     MCBTrip: MCBTrip,
-                                     status: "1"  
-									}}, { new: true}, function (err ,doc){
+iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, temp: temp, hum: hum, door: door, acpwr: acpwr, VPR: VPR, VPS: VPS, VPT: VPT, Vaccu : Vaccu,
+Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DRectf,DGen: DGen,ARRSTER: ARRSTER,Brectf: Brectf,MCBTrip: MCBTrip,status: "1"
+}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);
   }else{
@@ -94,13 +75,13 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal,
    res.send(id + ' berhasil di update'  );
 	message = {	
     from: '"RUANG SERVER" <ruangserver@ibstower.com>', // listed in rfc822 message header
-    to: 'it.nis@ibstower.com,eko.nurmansyah@ibstower.com',
+    to: 'hikmah.gumelar@ibstower.com',
     subject: 'PERINGATAN RUANG SERVER '+ temp + ' Derajat Celcius',
     html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
 	};
 
-//if (temp > 34 ){
 
+//if (temp > 34 ){
 /*transporter.sendMail(message, function(error, info){
   if (error) {
     console.log(error);
@@ -110,7 +91,54 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal,
 });
 
 }*/
+
 }
+var iot = require('../model/iot');
+
+iot.find({},function (err, cb) {
+
+for (var i = 0; i < cb.length; i++) {
+     
+
+
+var logBaru = new log({
+    id: id,
+    site: cb[i].site,
+    tanggal: tanggal,
+    temp: temp,
+    hum: hum,
+    door: door,
+    acpwr: acpwr,
+    VPR: VPR,
+    VPS: VPS,
+    VPT: VPT,
+    Vaccu: Vaccu,
+    Vrectf: Vrectf,
+    Ir: Ir,
+    Is: Is,
+    It: It,
+    FUEL: FUEL,
+    GON: GON,
+    GFAIL: GFAIL,
+    DRectf: DRectf,
+    DGen: DGen,
+    ARRSTER: ARRSTER,
+    Brectf: Brectf,
+    MCBTrip: MCBTrip,                      
+});
+
+ logBaru.save(function(err){
+
+    if(err){
+ 		console.log(err);
+ 	}else{
+ 		console.log('berhasil di simpan');
+    }
+      
+ });
+}
+});
+
 });
 });
 //}); penutup iot

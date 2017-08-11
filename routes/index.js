@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var mongo = require('../config/mongo');
 var iot = require('../model/iot');
+var log = require('../model/log');
 var app = express();
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
@@ -12,20 +13,6 @@ var multer = require('multer');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//email inisialisasi
-var transporter = nodemailer.createTransport({
-    host: 'mail.ibstower.com',
-    port: 465,
-    secure: true, // use TLS
-    auth: {
-        user: 'hikmah.gumelar@ibstower.com',
-        pass: 'H1kmah1982'
-    },
-    tls: {
-        // do not fail on invalid certs
-        rejectUnauthorized: false
-    }
-});
 
 //mongo inisialisasi
 mongo.init();
