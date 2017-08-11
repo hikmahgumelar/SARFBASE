@@ -65,29 +65,9 @@ Brectf =  req.param('t'),
 MCBTrip =  req.param('u'),
 stat = ol;  								     
 //io.emit('transmit', id);
-iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, 
-									 temp: temp, 
-									 hum: hum, 
-									 door: door, 
-									 acpwr: acpwr,
-									 VPR: VPR,
-  								     VPS: VPS,
-    								 VPT: VPT,
-                                     Vaccu : Vaccu,
-    								 Vrectf: Vrectf,
-    								 Ir: Ir,
-    								 Is: Is,
-                                     It: It,
-                                     FUEL: FUEL,
-                                     GON: GON,
-                                     GFAIL : GFAIL,
-                                     DRectf: DRectf,
-                                     DGen: DGen,
-                                     ARRSTER: ARRSTER,
-                                     Brectf: Brectf,
-                                     MCBTrip: MCBTrip,
-                                     status: "1"  
-									}}, { new: true}, function (err ,doc){
+iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, temp: temp, hum: hum, door: door, acpwr: acpwr, VPR: VPR, VPS: VPS, VPT: VPT, Vaccu : Vaccu,
+Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DRectf,DGen: DGen,ARRSTER: ARRSTER,Brectf: Brectf,MCBTrip: MCBTrip,status: "1"
+}}, { new: true}, function (err ,doc){
   if (err) {
     console.log(id);
   }else{
@@ -95,12 +75,12 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal,
    res.send(id + ' berhasil di update'  );
 	message = {	
     from: '"RUANG SERVER" <ruangserver@ibstower.com>', // listed in rfc822 message header
-    to: 'it.nis@ibstower.com,eko.nurmansyah@ibstower.com',
+    to: 'hikmah.gumelar@ibstower.com',
     subject: 'PERINGATAN RUANG SERVER '+ temp + ' Derajat Celcius',
     html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
 	};
 
-if (temp > 34 ){
+if (temp >= 34 ){
 
 transporter.sendMail(message, function(error, info){
   if (error) {
@@ -111,9 +91,17 @@ transporter.sendMail(message, function(error, info){
 });
 }
 }
+var iot = require('../model/iot');
+
+iot.find({},function (err, cb) {
+
+for (var i = 0; i < cb.length; i++) {
+     
+
+
 var logBaru = new log({
     id: id,
-    site: iot.find({id},{site}),
+    site: cb[i].site,
     tanggal: tanggal,
     temp: temp,
     hum: hum,
@@ -134,23 +122,20 @@ var logBaru = new log({
     DGen: DGen,
     ARRSTER: ARRSTER,
     Brectf: Brectf,
-    MCBTrip: MCBTrip,
-   
-
-                  
-    
+    MCBTrip: MCBTrip,                      
 });
+
  logBaru.save(function(err){
 
     if(err){
- 		console.log('tak dapat di simpan');
+ 		console.log(err);
  	}else{
  		console.log('berhasil di simpan');
     }
       
  });
-
-
+}
+});
 
 });
 });
