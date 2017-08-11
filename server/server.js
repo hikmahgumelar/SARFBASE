@@ -99,9 +99,9 @@ iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal,
     html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
 	};
 
-if (temp > 34 ){
+//if (temp > 34 ){
 
-transporter.sendMail(message, function(error, info){
+/*transporter.sendMail(message, function(error, info){
   if (error) {
     console.log(error);
   } else {
@@ -109,7 +109,7 @@ transporter.sendMail(message, function(error, info){
   }
 });
 
-}
+}*/
 }
 });
 });
