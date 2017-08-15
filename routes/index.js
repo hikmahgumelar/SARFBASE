@@ -37,7 +37,15 @@ var getdata = data;
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-res.render('index', { title: 'Smart Building' });
+iot.find({}, function(err, jumlah){
+iot.find({"status":"0"}, function(err,iotoffline){
+  console.log(iotoffline)
+iot.find({"status":"1"}, function(err,iotonline){
+  console.log(iotonline)
+res.render('index', { title: 'Smart Building', jumlahiot: jumlah, iotoffline: iotoffline, iotonline:iotonline});
+});
+});
+});
 });
 /* Halaman Monitor */
 router.get('/monitoring', function(req, res, next) {
