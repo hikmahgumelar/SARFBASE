@@ -93,12 +93,12 @@ transporter.sendMail(message, function(error, info){
 }
 var iot = require('../model/iot');
 
-iot.find({"id":id},{$in:["site"]}, function (err, cb) {
-  console.log(cb.site);
+iot.find({"id":id}, function (err, cb) {
+  //console.log(cb[0].site);
  
 var logBaru = new log({
     id: id,
-    site: cb.site,
+    site: cb[0].site,
     tanggal: tanggal,
     temp: temp,
     hum: hum,
@@ -127,7 +127,7 @@ var logBaru = new log({
     if(err){
  		console.log(err);
  	}else{
- 		console.log('berhasil di simpan');
+ 		//console.log('berhasil di simpan');
     }
       
  });
