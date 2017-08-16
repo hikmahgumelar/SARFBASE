@@ -93,15 +93,12 @@ transporter.sendMail(message, function(error, info){
 }
 var iot = require('../model/iot');
 
-iot.find({},function (err, cb) {
-
-for (var i = 0; i < cb.length; i++) {
-     
-
-
+iot.find({"id":id},{$in:["site"]}, function (err, cb) {
+  console.log(cb.site);
+ 
 var logBaru = new log({
     id: id,
-    site: cb[i].site,
+    site: cb.site,
     tanggal: tanggal,
     temp: temp,
     hum: hum,
@@ -134,9 +131,9 @@ var logBaru = new log({
     }
       
  });
-}
+});
 });
 
 });
-});
+
 //}); penutup iot
