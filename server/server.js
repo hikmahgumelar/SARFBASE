@@ -81,8 +81,8 @@ Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DR
 	};
 
 
-//if (temp > 34 ){
-/*transporter.sendMail(message, function(error, info){
+if (temp > 33 ){
+transporter.sendMail(message, function(error, info){
   if (error) {
     console.log(error);
   } else {
@@ -90,9 +90,11 @@ Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DR
   }
 });
 
-}*/
+}
 
 }
+//fungsi log
+/*
 var iot = require('../model/iot');
 
 iot.find({},function (err, cb) {
@@ -138,7 +140,8 @@ var logBaru = new log({
  });
 }
 });
-
+*/
+// akhir fungsi log
 });
 });
 //}); penutup iot
