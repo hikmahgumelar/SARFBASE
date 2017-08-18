@@ -23,6 +23,7 @@ console.log("update auto  ");
 iot.update({}, { $set:{ "status" : "0" } }, { multi : true },function (err ,doc){});
 }, 180000);
 
+var versi = "Versi 2.0.4 Beta";
 
 /* server */
 // routes will go here
@@ -37,12 +38,11 @@ var getdata = data;
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
+
 iot.find({}, function(err, jumlah){
 iot.find({"status":"0"}, function(err,iotoffline){
-  console.log(iotoffline)
 iot.find({"status":"1"}, function(err,iotonline){
-  console.log(iotonline)
-res.render('index', { title: 'Smart Building', jumlahiot: jumlah, iotoffline: iotoffline, iotonline:iotonline});
+res.render('index', { title: 'Smart Building', jumlahiot: jumlah, iotoffline: iotoffline, iotonline:iotonline, versi: versi});
 });
 });
 });
@@ -51,12 +51,16 @@ res.render('index', { title: 'Smart Building', jumlahiot: jumlah, iotoffline: io
 router.get('/monitoring', function(req, res, next) {
 iot.find({}, function(err, data){
 
-  res.render('monitor', { title: 'log monitoring', data: data});
+  res.render('monitor', { title: 'log monitoring', data: data,versi: versi});
 
 });
 });
 router.get('/mon', function(req, res, next) {
-  res.render('livemonitor', { title: 'Live Monitoring'});
+log.find({}, function(err, logs){  
+ 
+  res.render('livemonitor', { title: 'Log Monitoring',versi: versi, log: logs});
+
+});
 });
 
 router.post('/tambahIoT', function(req, res, next){
@@ -109,7 +113,7 @@ router.get('/tambah', function(req, res){
   iot.find({}, function(err, data){
 var i = data.length + 1;
 var idbaru1 = "IBST"+i++;
-  res.render('tambahIoT', {title : 'tambah perangkat IoT', idbaru: idbaru1, dataiot: data})
+  res.render('tambahIoT', {title : 'tambah perangkat IoT', idbaru: idbaru1, dataiot: data,versi: versi})
 });
 });
 //edit (ambil data sebelum di edit)
@@ -117,7 +121,7 @@ router.get('/:id', function(req, res){
 iot.findById(req.params.id,function(err, dataiot){
   if(err)
   iot.find({}, function(err, dataiotfull){ 
-  res.render('edit-iot',{ title: 'edit data IoT',dataiot: dataiot, datafull: dataiotfull});
+  res.render('edit-iot',{ title: 'edit data IoT',dataiot: dataiot, datafull: dataiotfull,versi: versi});
 });
 });
 //edit (simpan perubahan)
