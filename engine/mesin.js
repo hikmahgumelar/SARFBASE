@@ -97,15 +97,12 @@ transporter.sendMail(message, function(error, info){
 /*
 var iot = require('../model/iot');
 
-iot.find({},function (err, cb) {
-
-for (var i = 0; i < cb.length; i++) {
-     
-
-
+iot.find({"id":id}, function (err, cb) {
+  //console.log(cb[0].site);
+ 
 var logBaru = new log({
     id: id,
-    site: cb[i].site,
+    site: cb[0].site,
     tanggal: tanggal,
     temp: temp,
     hum: hum,
@@ -134,14 +131,18 @@ var logBaru = new log({
     if(err){
  		console.log(err);
  	}else{
- 		console.log('berhasil di simpan');
+ 		//console.log('berhasil di simpan');
     }
       
  });
-}
 });
+<<<<<<< HEAD:server/server.js
 */
 // akhir fungsi log
+=======
+>>>>>>> 4a739e72bfe14e6145b2f3661c469544f50e092b:engine/mesin.js
 });
+
 });
+
 //}); penutup iot

@@ -7,6 +7,13 @@ setInterval(function(){
 }, 700);
 });
 
+$(document).ready( function(){
+setInterval(function(){
+   $( "#status" ).load( "/ #status" );
+   
+
+}, 700);
+});
 
 
 var target = 'http://localhost'
