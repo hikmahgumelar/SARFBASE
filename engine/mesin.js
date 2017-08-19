@@ -94,7 +94,7 @@ transporter.sendMail(message, function(error, info){
 
 }
 //fungsi log
-/*
+
 var iot = require('../model/iot');
 
 iot.find({"id":id}, function (err, cb) {
@@ -136,11 +136,6 @@ var logBaru = new log({
       
  });
 });
-<<<<<<< HEAD:server/server.js
-*/
-// akhir fungsi log
-=======
->>>>>>> 4a739e72bfe14e6145b2f3661c469544f50e092b:engine/mesin.js
 });
 
 });
