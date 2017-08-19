@@ -55,7 +55,7 @@ iot.find({}, function(err, data){
 });
 });
 router.get('/mon', function(req, res, next) {
-log.find().limit(20).exec(function(err, logs){
+log.find({}),function(err, logs){
  
   res.render('livemonitor', { title: 'Log Monitoring',versi: versi, log: logs});
 
