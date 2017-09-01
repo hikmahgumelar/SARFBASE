@@ -1,6 +1,5 @@
 $('#Table').dataTable( {
     "serverSide": true,
-    "sAjaxDataProp": "",
     "ajax": {
         "url": '/api/log',
         "type": 'POST'
@@ -8,8 +7,11 @@ $('#Table').dataTable( {
    "aoColumns": [
         { "mData": "id" },
         { "mData": "site" },
+        { "mData": "tanggal" },
+        { "mData": "temp" },
         { "mData": "hum" },
-        { "mData": "door" }
+        { "mData": "door" },
+        { "mData": "VPR" },
     ]
 
 });
