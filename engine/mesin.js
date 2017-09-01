@@ -90,6 +90,7 @@ transporter.sendMail(message, function(error, info){
 });
 }
 }
+
 var iot = require('../model/iot');
 
 iot.find({"id":id}, function (err, cb) {
@@ -117,7 +118,8 @@ var logBaru = new log({
     DGen: DGen,
     ARRSTER: ARRSTER,
     Brectf: Brectf,
-    MCBTrip: MCBTrip,                      
+    MCBTrip: MCBTrip,  
+                        
 });
 
  logBaru.save(function(err){

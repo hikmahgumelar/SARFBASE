@@ -9,12 +9,24 @@ var app = express();
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var multer = require('multer');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+mongo.init();
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 //mongo inisialisasi
-mongo.init();
+router.post('/api/log', function (req, res) {
+    var Model = require('../model/log'),
+        datatablesQuery = require('datatables-query'),
+        params = req.body,
+
+        query = datatablesQuery(Model);
+      
+    query.run(params).then(function (data) {
+        res.json(data);
+    }, function (err) {
+        res.status(500).json(err);
+    });
+});
+
 
 var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(function() {
@@ -54,14 +66,13 @@ iot.find({}, function(err, data){
 
 });
 });
+
 router.get('/mon', function(req, res, next) {
-//log.find({}, function(err, logs){
- log.find().limit(300).exec(function(err, logs){
-
-  res.render('livemonitor', { title: 'Live Monitoring',versi: versi, log: logs});
+ 
+  res.render('livemonitor', { title: 'Log Monitoring',versi: versi});
 
 });
-});
+
 
 router.post('/tambahIoT', function(req, res, next){
   iot.find({}, function(err, data){  
@@ -91,10 +102,7 @@ var iotBaru = new iot({
     Brectf: "N/A",
     MCBTrip: "N/A",
     alamat: req.body.alamat,
-    status: "N/A",
-
-                  
-    
+    status: "N/A",    
 });
  iotBaru.save(function(err){
 
