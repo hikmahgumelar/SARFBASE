@@ -22,7 +22,6 @@ router.post('/api/log', function (req, res) {
       
     query.run(params).then(function (data) {
         res.json(data);
-        console.log(data);
     }, function (err) {
         res.status(500).json(err);
     });
