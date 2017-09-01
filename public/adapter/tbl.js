@@ -7,11 +7,16 @@ $('#Table').dataTable( {
         "url": '/api/log',
         "type": 'POST'
     },
+   "sorting": [[ 2, "desc" ]],
    "aoColumns": [
         { "mData": "id" },
         { "mData": "site" },
         { "mData": "tanggal" },
-    
+        { "mData": "temp" },
+        { "mData": "hum" },
+        { "mData": "door" },
+        { "mData": "VPR" },
+        
     ],
 
 });
