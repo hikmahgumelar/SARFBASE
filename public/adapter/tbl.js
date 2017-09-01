@@ -7,7 +7,6 @@ $('#Table').dataTable( {
         "url": '/api/log',
         "type": 'POST'
     },
-   
    "aoColumns": [
         { "mData": "id" },
         { "mData": "site" },
