@@ -11,9 +11,7 @@ $('#Table').dataTable( {
         { "mData": "id" },
         { "mData": "site" },
         { "mData": "tanggal" },
-        { "mData": "temp" },
-        { "mData": "hum" },
-        { "mData": "door" },
+    
     ],
 
 });
