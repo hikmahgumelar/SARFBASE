@@ -38,7 +38,7 @@ var year = dateObj.getFullYear();
 var jam = dateObj.getHours();
 var menit = dateObj.getMinutes();
 var detik = dateObj.getSeconds();
-tanggalformat = day + "/" + month + "/" + year +"  " + jam + ":" + menit +":"+ detik;
+tanggalformat = day + "/" + month + "/" + year + "      " + jam + ":" + menit + "        WIB" ;
 
 //var NewIot = new iot({
 
