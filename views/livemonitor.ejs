@@ -1,16 +1,14 @@
-<% include ../partial/atas %>
-<script src="/dist/js/jquery.min.js"></script>
-<script src="/dist/js/jquery.dataTables.min.js"></script>
 
 
-<script src="/adapter/tbl.js"></script>
+<link rel="stylesheet" type="text/css" href="/dist/css/jquery.dataTables.min.css">
+
 
 <% var arrdata = ["CLOSE","OPEN"]; %>
 <div class="row">
 <div class="col-xs-12">
 <div class="box box-primary">
 <div class="box-header with-border">
-      <table id="Table" class="display">
+      <table id="Table" class="mData">
       <thead>
       	<tr>
       		 <th>ID</th>
@@ -21,21 +19,9 @@
            <th>AC/PWR</th>
            <th>FUEL</th>
                   
-        </tr>
-      
-      </thead>
-       <tbody><% for (var i=0;i < log.length; i++){   %>
-        <tr>
-        <td><%= log[i].id %></td>
-        <td><%= log[i].site %></td>
-        <td><%= log[i].tanggal %></td>
-        <td><%= log[i].temp %></td>
-        <td><%= arrdata[log[i].door] %></td>
-        <td><%= log[i].acpwr %></td>
-        <td><%= log[i].FUEL %></td>
-          <% } %>
-        </tr>
-      </tbody>
+     </tr>
+
+    </tbody>
   	  </table>
 </div>
 </div>
@@ -44,8 +30,9 @@
 </div>
 
  
+<script src="/dist/js/jquery.min.js"></script>
+<script src="/dist/js/jquery.dataTables.min.js"></script>
+<script src="/adapter/tbl.js"></script>
 
 
 
-
-<% include ../partial/bawah %>

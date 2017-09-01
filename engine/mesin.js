@@ -6,7 +6,7 @@ var iot = require('../model/iot');
 var log = require('../model/log');
 var mongo = require('../config/mongo');
 var mongoose = require('mongoose');
-//var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 // start the server
 app.listen(port);
 console.log('Server jalan.....');
@@ -78,7 +78,7 @@ Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DR
     subject: 'PERINGATAN RUANG SERVER '+ temp + ' Derajat Celcius',
     html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
 	};
-/*
+
 if (temp >= 34 ){
 
 transporter.sendMail(message, function(error, info){
@@ -90,7 +90,7 @@ transporter.sendMail(message, function(error, info){
 });
 }
 }
-*/
+
 var iot = require('../model/iot');
 
 iot.find({"id":id}, function (err, cb) {
@@ -118,7 +118,8 @@ var logBaru = new log({
     DGen: DGen,
     ARRSTER: ARRSTER,
     Brectf: Brectf,
-    MCBTrip: MCBTrip,                      
+    MCBTrip: MCBTrip,  
+                        
 });
 
  logBaru.save(function(err){
