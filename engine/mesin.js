@@ -20,7 +20,7 @@ var transporter = nodemailer.createTransport({
     secure: true, // use TLS
     auth: {
         user: 'hikmah.gumelar@ibstower.com',
-        pass: ''
+        pass: 'H1kmah1982'
     },
     tls: {
         // do not fail on invalid certs
@@ -80,7 +80,7 @@ Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DR
     html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
 	};
 
-if (temp >= 28 ){
+if (id=="IBST1" && temp >= 26 ){
 
 transporter.sendMail(message, function(error, info){
   if (error) {
