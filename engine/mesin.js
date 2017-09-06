@@ -20,7 +20,7 @@ var transporter = nodemailer.createTransport({
     secure: true, // use TLS
     auth: {
         user: 'hikmah.gumelar@ibstower.com',
-        pass: 'H1kmah1982'
+        pass: ''
     },
     tls: {
         // do not fail on invalid certs
@@ -32,13 +32,13 @@ var transporter = nodemailer.createTransport({
 app.get('/data', function(req, res) {
 var ol = Date.now();
 var dateObj = new Date();
-var month = dateObj.getMonth() + 1; //months from 1-12
-var day = dateObj.getDate();
+var month = ('0' + (dateObj.getMonth()+1)).slice(-2); //months from 1-12
+var day = ('0' + dateObj.getDate()).slice(-2);
 var year = dateObj.getFullYear();
-var jam = dateObj.getHours();
-var menit = dateObj.getMinutes();
+var jam = ('0' + dateObj.getHours()).slice(-2);
+var menit = ('0' + dateObj.getMinutes()).slice(-2);
 var detik = dateObj.getSeconds();
-tanggalformat = day + "/" + month + "/" + year + "      " + jam + ":" + menit + "        WIB" ;
+tanggalformat = day + "-" + month + "-" + year + "  " + jam + ":" + menit + "        WIB" ;
 
 //var NewIot = new iot({
 
@@ -80,7 +80,7 @@ Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DR
     html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
 	};
 
-if (temp >= 34 ){
+if (temp >= 28 ){
 
 transporter.sendMail(message, function(error, info){
   if (error) {
@@ -96,14 +96,14 @@ var iot = require('../model/iot');
 
 iot.find({"id":id}, function (err, cb) {
   //console.log(cb[0].site);
- 
+ var arrdoor = ["CLOSE","OPEN"];
 var logBaru = new log({
     id: id,
     site: cb[0].site,
     tanggal: tanggal,
     temp: temp,
     hum: hum,
-    door: door,
+    door: arrdoor[door],
     VPR: VPR,
     VPS: VPS,
     VPT: VPT,
