@@ -9,7 +9,12 @@ var app = express();
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var multer = require('multer');
+var User = require('../model/User');
+var auth = require('../libs/auth');
+var passport = require('passport');
+var flash = require('connect-flash');
 mongo.init();
+
 //app.use(bodyParser.urlencoded({ extended: true }));
 
 //mongo inisialisasi
@@ -27,7 +32,47 @@ router.post('/api/log', function (req, res) {
     });
 });
 
+router.get('/login', function(req, res, next) {
+    res.render('login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
+});
 
+/**
+ * POST login
+ */
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local-login', {
+        successRedirect: '/tambah',
+        failureRedirect: '/login',
+        badRequestMessage: 'Inputan Anda belum lengkap, mohon di lengkapi',
+        failureFlash : true
+    })(req, res, next)
+});
+// daftar
+router.post('/daftar',
+    function(req, res, next) {
+        passport.authenticate('local-register', {
+            successRedirect: '/login',
+            failureRedirect: '/daftar',
+            failureFlash : true,
+            badRequestMessage: 'Inputan Anda belum lengkap, mohon di lengkapi'
+        })(req, res, next);
+    });
+router.get('/daftar', function(req, res){
+ 
+ res.render('daftar',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
+
+}); 
+//logout
+
+router.get('/logout',
+    function(req, res, next){
+        req.logout();
+        res.redirect('/');
+
+
+
+//functi offline/online
+});
 var minutes = 1, the_interval = minutes * 60 * 1000;
 setInterval(function() {
 console.log("update auto  ");
@@ -118,7 +163,7 @@ var iotBaru = new iot({
 });      
     
  });
-router.get('/tambah', function(req, res){
+router.get('/tambah', auth.BolehMasuk,function(req, res){
   iot.find({}, function(err, data){
 var i = data.length + 1;
 var idbaru1 = "IBST"+i++;

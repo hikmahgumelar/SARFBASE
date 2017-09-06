@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -6,10 +7,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var fs = require('fs');
+var flash = require('connect-flash');
 var jsonfile = require('jsonfile')
 var file = './public/perintah.json';
 var multer = require('multer');
-
+var passport = require('./config/passport.js')
 var app = express(); 
 
 // view engine setup
@@ -22,6 +24,19 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
+app.use(session({
+    secret: 'rahasia',
+    cookie: { maxAge: 60000000, secure: false },
+    resave: true,
+    saveUninitialized: false
+}));
+passport.init(app);
+app.use(function (req, res, next){
+res.locals.login = req.isAuthenticated();
+next();
+});
+var index = require('./routes/index');
+//var daftar = require('./routes/daftar');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
