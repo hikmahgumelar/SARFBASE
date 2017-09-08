@@ -15,7 +15,12 @@ var passport = require('passport');
 var flash = require('connect-flash');
 mongo.init();
 
-//app.use(bodyParser.urlencoded({ extended: true }));
+
+router.get('/api/chart', function(req,res){
+
+  getData(res);
+
+});
 
 //mongo inisialisasi
 router.post('/api/log', function (req, res) {
@@ -33,7 +38,7 @@ router.post('/api/log', function (req, res) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
+    res.render('admin/login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
 });
 
 /**
@@ -59,7 +64,7 @@ router.post('/daftar',
     });
 router.get('/daftar', function(req, res){
  
- res.render('daftar',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
+ res.render('admin/daftar',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
 
 }); 
 //logout
@@ -115,7 +120,7 @@ iot.find({}, function(err, data){
 router.get('/mon', function(req, res, next) {
 
  
-  res.render('livemonitor', { title: 'Log Monitoring',versi: versi});
+  res.render('log', { title: 'Log Monitoring',versi: versi});
 
 });
 
@@ -200,4 +205,50 @@ iot.findByIdAndRemove(req.params.id,function(err, dataiot){
 });
 
 
+function getData(){
+log.find({}).limit(30).exec(function(err, hasil){
+ if (err) throw err;
+ var idArray = [];
+ var monthArray = [];
+ var tempArray = [];
+
+ for (index in hasil){
+
+    var Nilai = hasil[index];
+
+    var idSite = Nilai['id'];
+    var tanggal = Nilai['tanggal'];
+    var temp = Nilai['temp'];
+
+ idArray.push({'lokasi': idSite});
+ monthArray.push({'bulan': tanggal});
+ tempArray.push({'temperatur': temp});
+
+}
+
+var dataset = [
+{
+    "sitename" : "Riau 23",
+    "data" : idArray 
+
+},
+{
+    "sitename" : "Riau 21",
+    "data" :  tempArray 
+    
+}
+];
+
+var response = {
+
+  "dataset": dataset,
+  "categories": monthArray
+};
+ 
+});
+}
+
+
 module.exports = router;
+
+
