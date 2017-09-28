@@ -13,6 +13,8 @@ var User = require('../model/User');
 var auth = require('../libs/auth');
 var passport = require('passport');
 var flash = require('connect-flash');
+var multer = require('multer');
+
 mongo.init();
 
 
@@ -36,7 +38,28 @@ router.post('/api/log', function (req, res) {
         res.status(500).json(err);
     });
 });
+//upload init
+var storage =   multer.diskStorage({
+    destination: function (req, file, callback) {
+          callback(null, './uploads');
+        },
+    filename: function (req, file, callback) {
+          callback(null, file.fieldname + '-' + Date.now());
+        }
+});
 
+var upload = multer({ storage : storage}).single('gambar');
+
+router.post('/api/upload',function(req,res){
+      upload(req,res,function(err) {
+                if(err) {
+                        return res.end("Error uploading file.");
+                    }
+                res.end("File is uploaded");
+            });
+});
+
+//login
 router.get('/login', function(req, res, next) {
     res.render('admin/login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
 });
@@ -75,7 +98,14 @@ router.get('/logout',
         res.redirect('/');
 
 
+//upload gambar
 
+router.get('/gambar', function(req ,res){
+
+
+    res.send("upload");
+
+});
 //functi offline/online
 });
 var minutes = 1, the_interval = minutes * 60 * 1000;
