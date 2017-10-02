@@ -3,7 +3,7 @@ Highcharts.chart('container', {
         type: 'line'
     },
     title: {
-        text: 'Monthly Average Temperature'
+        text: 'Rata-Rata Suhu ruangan server dalam sebulan'
     },
     subtitle: {
         text: 'Source: monitoring.ibstower.com'
