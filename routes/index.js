@@ -48,17 +48,26 @@ var storage =   multer.diskStorage({
         }
 });
 
-var upload = multer({ storage : storage}).single('gambar');
+var upload = multer({ storage : storage}).single('file');
 
 router.post('/api/upload',function(req,res){
+
       upload(req,res,function(err) {
                 if(err) {
-                        return res.end("Error uploading file.");
+                        return 
+                        res.send('error');
+                        res.end("Error uploading file.");
                     }
+                    res.send("kekirim");                                                                                                                                                          
                 res.end("File is uploaded");
             });
 });
+//ui upload
 
+router.get('/upload', function(req, res){
+ 
+
+});
 //login
 router.get('/login', function(req, res, next) {
     res.render('admin/login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
@@ -98,14 +107,6 @@ router.get('/logout',
         res.redirect('/');
 
 
-//upload gambar
-
-router.get('/gambar', function(req ,res){
-
-
-    res.send("upload");
-
-});
 //functi offline/online
 });
 var minutes = 1, the_interval = minutes * 60 * 1000;
