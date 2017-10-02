@@ -13,9 +13,16 @@ var User = require('../model/User');
 var auth = require('../libs/auth');
 var passport = require('passport');
 var flash = require('connect-flash');
+var multer = require('multer');
+
 mongo.init();
 
-//app.use(bodyParser.urlencoded({ extended: true }));
+
+router.get('/api/chart', function(req,res){
+
+  getData(res);
+
+});
 
 //mongo inisialisasi
 router.post('/api/log', function (req, res) {
@@ -31,9 +38,30 @@ router.post('/api/log', function (req, res) {
         res.status(500).json(err);
     });
 });
+//upload init
+var storage =   multer.diskStorage({
+    destination: function (req, file, callback) {
+          callback(null, './uploads');
+        },
+    filename: function (req, file, callback) {
+          callback(null, file.fieldname + '-' + Date.now());
+        }
+});
 
+var upload = multer({ storage : storage}).single('gambar');
+
+router.post('/api/upload',function(req,res){
+      upload(req,res,function(err) {
+                if(err) {
+                        return res.end("Error uploading file.");
+                    }
+                res.end("File is uploaded");
+            });
+});
+
+//login
 router.get('/login', function(req, res, next) {
-    res.render('login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
+    res.render('admin/login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
 });
 
 /**
@@ -59,7 +87,7 @@ router.post('/daftar',
     });
 router.get('/daftar', function(req, res){
  
- res.render('daftar',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
+ res.render('admin/daftar',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
 
 }); 
 //logout
@@ -70,7 +98,14 @@ router.get('/logout',
         res.redirect('/');
 
 
+//upload gambar
 
+router.get('/gambar', function(req ,res){
+
+
+    res.send("upload");
+
+});
 //functi offline/online
 });
 var minutes = 1, the_interval = minutes * 60 * 1000;
@@ -114,7 +149,7 @@ iot.find({}, function(err, data){
 
 router.get('/mon', function(req, res, next) {
  
-  res.render('livemonitor', { title: 'Log Monitoring',versi: versi});
+  res.render('log', { title: 'Log Monitoring',versi: versi});
 
 });
 
@@ -199,4 +234,50 @@ iot.findByIdAndRemove(req.params.id,function(err, dataiot){
 });
 
 
+function getData(){
+log.find({}).limit(30).exec(function(err, hasil){
+ if (err) throw err;
+ var idArray = [];
+ var monthArray = [];
+ var tempArray = [];
+
+ for (index in hasil){
+
+    var Nilai = hasil[index];
+
+    var idSite = Nilai['id'];
+    var tanggal = Nilai['tanggal'];
+    var temp = Nilai['temp'];
+
+ idArray.push({'lokasi': idSite});
+ monthArray.push({'bulan': tanggal});
+ tempArray.push({'temperatur': temp});
+
+}
+
+var dataset = [
+{
+    "sitename" : "Riau 23",
+    "data" : idArray 
+
+},
+{
+    "sitename" : "Riau 21",
+    "data" :  tempArray 
+    
+}
+];
+
+var response = {
+
+  "dataset": dataset,
+  "categories": monthArray
+};
+ 
+});
+}
+
+
 module.exports = router;
+
+
