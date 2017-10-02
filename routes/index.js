@@ -14,7 +14,7 @@ var auth = require('../libs/auth');
 var passport = require('passport');
 var flash = require('connect-flash');
 var multer = require('multer');
-
+var filestore = require('fs-extra');
 mongo.init();
 
 
@@ -38,7 +38,7 @@ router.post('/api/log', function (req, res) {
         res.status(500).json(err);
     });
 });
-//upload init
+/*//upload init
 var storage =   multer.diskStorage({
     destination: function (req, file, callback) {
           callback(null, './uploads');
@@ -61,13 +61,22 @@ router.post('/api/upload',function(req,res){
                     res.send("kekirim");                                                                                                                                                          
                 res.end("File is uploaded");
             });
-});
+}); */
 //ui upload
 
-router.get('/upload', function(req, res){
+router.get('/api/upload', function(req, res){
  
-
+ var gambar = req.param('file');
+ var oldpath = gambar;
+ var newpath = './uploads/' + 'bukti.jpg';
+      filestore.copy(oldpath, newpath, function (err) {
+        if (err) throw err;
+        res.write('File ke upload');
+        res.end();
+      }); 
 });
+
+
 //login
 router.get('/login', function(req, res, next) {
     res.render('admin/login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
@@ -235,50 +244,42 @@ iot.findByIdAndRemove(req.params.id,function(err, dataiot){
   });
 });
 
+//public uploads
 
-function getData(){
-log.find({}).limit(30).exec(function(err, hasil){
- if (err) throw err;
- var idArray = [];
- var monthArray = [];
- var tempArray = [];
+//upload versi2 
+router.get('/photos', uploadFile, addPhoto)
 
- for (index in hasil){
-
-    var Nilai = hasil[index];
-
-    var idSite = Nilai['id'];
-    var tanggal = Nilai['tanggal'];
-    var temp = Nilai['temp'];
-
- idArray.push({'lokasi': idSite});
- monthArray.push({'bulan': tanggal});
- tempArray.push({'temperatur': temp});
-
+// file is automatically saved to /public/uploads, let's just set 
+function uploadFile(req, res, next) {
+  if (req.files) {
+    req.body.url = "http://localhost:7777" + req.files.file.path.split("/").slice(-2).join("/")
+    req.body.path = req.files.file.path.split("/").slice(-2).join("/")
+  }
+  next()
 }
 
-var dataset = [
-{
-    "sitename" : "Riau 23",
-    "data" : idArray 
-
-},
-{
-    "sitename" : "Riau 21",
-    "data" :  tempArray 
-    
-}
-];
-
-var response = {
-
-  "dataset": dataset,
-  "categories": monthArray
+// file upload is optional, it could have come before
+function addPhoto(req, res) {
+  var eventId = req.param("eventId")
+  var e = req.body
+  var userId = e.userId ? new ObjectId(e.userId) : undefined
+  var photo = new Photo({
+      userId        : userId
+    , eventId       : new ObjectId(e.eventId)
+    , latitude      : e.latitude
+    , longitude     : e.longitude
+    , path          : e.path
+    , url           : e.url
+    , type          : e.type
+    , title         : e.title
+    , description   : e.description
+  })
+  
+  photo.save(function(err) {
+    if (err) return res.send(err.message, 500)
+    res.json("OK")
+  })
 };
- 
-});
-}
-
 
 module.exports = router;
 
