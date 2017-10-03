@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist version="1" xmlns="http://xspf.org/ns/0/">
+  <trackList>
+    <track>
+      <location>Music/dido/01-dido-white flag.mp3</location>
+      <title>White.Flag</title>
+      <creator>[www.shamusic.net]</creator>
+      <album>[www.shamusic.net]</album>
+      <duration>242000</duration>
+    </track>
+    <track>
+      <location>Music/dido/03_Bondan_Prakoso__Fade2Black_tetap_semangat.mp3</location>
+      <title>Tetap Semangat</title>
+      <creator>Bondan Prakoso &amp; Fade2Black</creator>
+      <album>For All</album>
+      <duration>276000</duration>
+      <image>(embedded)</image>
+    </track>
+    <track>
+      <location>Music/dido/03-dido-life for rent.mp3</location>
+      <title>Life.For.Rent</title>
+      <creator>[www.shamusic.net]</creator>
+      <album>[www.shamusic.net]</album>
+      <duration>222000</duration>
+    </track>
+    <track>
+      <location>Music/dido/03 Stan.mp3</location>
+      <title>Stan</title>
+      <creator>Eminem</creator>
+      <album>The Marshall Mathers LP</album>
+      <duration>404000</duration>
+    </track>
+    <track>
+      <location>Music/dido/Bondan_Prakoso_Kita_Selamanya.mp3</location>
+      <title>Kita Selamanya</title>
+      <creator>Bondan Prakoso &amp; Fade2Black</creator>
+      <album>For All</album>
+      <duration>258000</duration>
+      <image>(embedded)</image>
+    </track>
+    <track>
+      <location>Music/dido/Coldplay - Hymn For The Weekend 2016.mp3</location>
+      <title></title>
+      <creator>www.Best-ks.com</creator>
+      <album>www.Best-ks.com</album>
+      <duration>260000</duration>
+      <image>(embedded)</image>
+    </track>
+    <track>
+      <location>Music/dido/the-chainsmokers-dont-let-me-down-illenium-remix(h.mp3</location>
+      <title>The Chainsmokers - Don't Let Me Down (Illenium Remix)</title>
+      <creator>The Chainsmokers</creator>
+      <album>JoinLagu.Info</album>
+      <duration>219000</duration>
+      <image>(embedded)</image>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/Bondan - unity.mp3</location>
+      <title>01 Unity</title>
+      <creator>Bondan Prakoso</creator>
+      <album>Unity</album>
+      <duration>296000</duration>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/Netral - I Love You.mp3</location>
+      <title></title>
+      <creator>NETRAL</creator>
+      <album>EKLUSIF</album>
+      <duration>179000</duration>
+      <image>(embedded)</image>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/Netral - Sorry.mp3</location>
+      <title>Sorry -</title>
+      <creator>Netral</creator>
+      <album>Putih</album>
+      <duration>299000</duration>
+      <image>(embedded)</image>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/jar of heart.mp3</location>
+      <title>Jar of Hearts</title>
+      <creator>Christina Perri</creator>
+      <album>Jar of Hearts</album>
+      <duration>247000</duration>
+      <image>(embedded)</image>
+    </track>
+    <track>
+      <location>Music/dido/03 Stan.mp3</location>
+      <title>Stan</title>
+      <creator>Eminem</creator>
+      <album>The Marshall Mathers LP</album>
+      <duration>404000</duration>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/greenday - 21 guns (cast version).mp3</location>
+      <title>GREENDAY - 21 GUNS (CAST VERSION)</title>
+      <creator>Green Day</creator>
+      <album>American Idiot [The Original Broadway Cast Recording]</album>
+      <duration>281000</duration>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/killing me inside - tormented.mp3</location>
+      <title>Torment</title>
+      <creator>Killing Me Inside</creator>
+      <album>A Fresh Start To Something New</album>
+      <duration>285000</duration>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/A Thousand Years-Christina Perri.mp3</location>
+      <title></title>
+      <duration>287000</duration>
+    </track>
+    <track>
+      <location>Music/Untitled Folder/System Of A Down   Lonely Day[1].mp3</location>
+      <title></title>
+      <duration>172000</duration>
+    </track>
+  </trackList>
+</playlist>
