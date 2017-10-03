@@ -39,6 +39,7 @@ router.post('/api/log', function (req, res) {
     });
 });
 //upload init
+/*
 var storage =   multer.diskStorage({
     destination: function (req, file, callback) {
           callback(null, './uploads');
@@ -62,22 +63,22 @@ router.post('/api/upload',function(req,res){
                 res.end("File is uploaded");
                 console.log('uploaded');
             });
-}); 
+});
+*/ 
 //ui upload
-/*
+
 router.get('/api/upload', function(req, res){
- 
  var gambar = req.param('file');
  var oldpath = gambar;
  var newpath = './uploads/' + 'bukti.png';
-      filestore.copy(oldpath, newpath, function (err) {
+      filestore.writeFile(oldpath, newpath, function (err) {
         if (err) throw err;
         res.write('File ke upload');
         res.end();
       }); 
 });
 
-*/
+
 //login
 router.get('/login', function(req, res, next) {
     res.render('admin/login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
