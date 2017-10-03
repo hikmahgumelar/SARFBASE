@@ -60,6 +60,7 @@ router.post('/api/upload',function(req,res){
                     }
                     res.send("kekirim");                                                                                                                                                          
                 res.end("File is uploaded");
+                console.log('uploaded');
             });
 }); 
 //ui upload
