@@ -44,11 +44,11 @@ var storage =   multer.diskStorage({
           callback(null, './uploads');
         },
     filename: function (req, file, callback) {
-          callback(null, file.fieldname + '-' + Date.now()+'.'+'jpg');
+          callback(null, file.fieldname + '-' + Date.now());
         }
 });
 
-var upload = multer({ storage : storage}).single('File');
+var upload = multer({ storage : storage}).single('filegambar');
 
 router.post('/api/upload',function(req,res){
 
