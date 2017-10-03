@@ -48,7 +48,7 @@ var storage =   multer.diskStorage({
         }
 });
 
-var upload = multer({ storage : storage}).single('File');
+var upload = multer({ storage : storage}).single('filegambar');
 
 router.post('/api/upload',function(req,res){
 
