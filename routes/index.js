@@ -72,7 +72,7 @@ router.get('/api/upload', function(req, res){
  var gambar = req.param('file');
  var oldpath = gambar;
  var newpath = './uploads/' + 'bukti.png';
-      filestore.copy(path.resolve(oldpath),path.resolve(newpath), function (err) {
+      filestore.copySync(oldpath,newpath, function (err) {
         if (err) throw err;
         res.write('File ke upload');
         res.end();
