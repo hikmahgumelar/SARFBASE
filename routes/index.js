@@ -38,17 +38,17 @@ router.post('/api/log', function (req, res) {
         res.status(500).json(err);
     });
 });
-/*//upload init
+//upload init
 var storage =   multer.diskStorage({
     destination: function (req, file, callback) {
           callback(null, './uploads');
         },
     filename: function (req, file, callback) {
-          callback(null, file.fieldname + '-' + Date.now());
+          callback(null, file.fieldname + '-' + Date.now()+'.'+'jpg');
         }
 });
 
-var upload = multer({ storage : storage}).single('file');
+var upload = multer({ storage : storage}).single('File');
 
 router.post('/api/upload',function(req,res){
 
@@ -61,14 +61,14 @@ router.post('/api/upload',function(req,res){
                     res.send("kekirim");                                                                                                                                                          
                 res.end("File is uploaded");
             });
-}); */
+}); 
 //ui upload
-
+/*
 router.get('/api/upload', function(req, res){
  
  var gambar = req.param('file');
  var oldpath = gambar;
- var newpath = './uploads/' + 'bukti.jpg';
+ var newpath = './uploads/' + 'bukti.png';
       filestore.copy(oldpath, newpath, function (err) {
         if (err) throw err;
         res.write('File ke upload');
@@ -76,7 +76,7 @@ router.get('/api/upload', function(req, res){
       }); 
 });
 
-
+*/
 //login
 router.get('/login', function(req, res, next) {
     res.render('admin/login',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
