@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('app-a.p.i.1.0:server');
+//var debug = require('debug')('app-a.p.i.1.0:server');
 var http = require('http');
 
 /**
@@ -30,7 +30,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
  // Normalize a port into a number, string, or false.
- 
+
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
