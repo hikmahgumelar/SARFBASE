@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var mongoURI = "mongodb://localhost:27017/iot";
+var mongoURI = "mongodb://iotmon:iotmon2018@ds145121.mlab.com:45121/iotmon";
 
 module.exports = {
     init: function () {
