@@ -36,5 +36,8 @@
     "socket.io": "^1.6.0",
     "socket.io-client": "^1.6.0",
     "ws": "^1.1.1"
+  },
+  "engines": {
+    "node": "10.2.1"
   }
 }
