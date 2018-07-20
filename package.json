@@ -2,7 +2,7 @@
   "name": "app-a.p.i.1.0",
   "version": "2.0.3",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "concurrently --kill-others-on fail \"node ./bin/www\" \"node ./engine/mesin.js\""
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
