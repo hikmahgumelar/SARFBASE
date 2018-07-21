@@ -32,7 +32,7 @@ router.post('/api/log', function (req, res) {
         params = req.body,
 
         query = datatablesQuery(Model);
-      
+
     query.run(params).then(function (data) {
         res.json(data);
     }, function (err) {
@@ -56,16 +56,16 @@ router.post('/api/upload',function(req,res){
 
       upload(req,res,function(err) {
                 if(err) {
-                        return 
+                        return
                         res.send('error');
                         res.end("Error uploading file.");
                     }
-                    res.send("kekirim");                                                                                                                                                          
+                    res.send("kekirim");
                 res.end("File is uploaded");
                 console.log('uploaded');
             });
 });
-*/ 
+*/
 //ui upload
 
 router.get('/api/upload', function(req, res){
@@ -76,7 +76,7 @@ router.get('/api/upload', function(req, res){
         if (err) throw err;
         res.write('File ke upload');
         res.end();
-      }); 
+      });
 });
 
 
@@ -107,10 +107,10 @@ router.post('/daftar',
         })(req, res, next);
     });
 router.get('/daftar', function(req, res){
- 
+
  res.render('admin/daftar',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
 
-}); 
+});
 //logout
 
 router.get('/logout',
@@ -127,14 +127,14 @@ console.log("update auto  ");
 iot.update({}, { $set:{ "status" : "0" } }, { multi : true },function (err ,doc){});
 }, 180000);
 
-var versi = "Versi 2.0.4 Beta";
+var versi = "Versi 2.0.5";
 
 /* server */
 // routes will go here
 /*
 //socket.on('transmit', function (data) {
 
- 
+
 
 var getdata = data;
 });*/
@@ -161,14 +161,14 @@ iot.find({}, function(err, data){
 });
 
 router.get('/mon', function(req, res, next) {
- 
+
   res.render('log', { title: 'Log Monitoring',versi: versi});
 
 });
 
 
 router.post('/tambahIoT', function(req, res, next){
-  iot.find({}, function(err, data){  
+  iot.find({}, function(err, data){
     var i = data.length + 1;
 var iotBaru = new iot({
     id: "IBST"+i++,
@@ -195,7 +195,7 @@ var iotBaru = new iot({
     Brectf: "N/A",
     MCBTrip: "N/A",
     alamat: req.body.alamat,
-    status: "N/A",    
+    status: "N/A",
 });
  iotBaru.save(function(err){
 
@@ -205,10 +205,10 @@ var iotBaru = new iot({
  		console.log('berhasil di simpan');
  	      res.redirect('/tambah');
     }
-      
+
  });
-});      
-    
+});
+
  });
 router.get('/tambah', auth.BolehMasuk,function(req, res){
   iot.find({}, function(err, data){
@@ -221,7 +221,7 @@ var idbaru1 = "IBST"+i++;
 router.get('/:id', function(req, res){
 iot.findById(req.params.id,function(err, dataiot){
   if(err)
-  iot.find({}, function(err, dataiotfull){ 
+  iot.find({}, function(err, dataiotfull){
   res.render('edit-iot',{ title: 'edit data IoT',dataiot: dataiot, datafull: dataiotfull,versi: versi});
 });
 });
@@ -232,7 +232,7 @@ router.post('/perubahan/:id',function(req, res){
   var iotBaru = ({
       site: req.body.site,
       harga: req.body.alamat,
-      
+
   });
 iot.findByIdAndUpdate(req.params.id, iotBaru, function (err, dataiot){
    res.redirect('/tambah');
@@ -248,10 +248,10 @@ iot.findByIdAndRemove(req.params.id,function(err, dataiot){
 
 //public uploads
 
-//upload versi2 
+//upload versi2
 router.get('/photos', uploadFile, addPhoto)
 
-// file is automatically saved to /public/uploads, let's just set 
+// file is automatically saved to /public/uploads, let's just set
 function uploadFile(req, res, next) {
   if (req.files) {
     req.body.url = "http://localhost:7777" + req.files.file.path.split("/").slice(-2).join("/")
@@ -276,7 +276,7 @@ function addPhoto(req, res) {
     , title         : e.title
     , description   : e.description
   })
-  
+
   photo.save(function(err) {
     if (err) return res.send(err.message, 500)
     res.json("OK")
@@ -284,5 +284,3 @@ function addPhoto(req, res) {
 };
 
 module.exports = router;
-
-
