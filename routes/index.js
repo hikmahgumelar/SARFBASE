@@ -70,7 +70,7 @@ router.post('/api/upload',function(req,res){
 
 router.get('/api/upload', function(req, res){
  var gambar = req.param('file');
- var oldpath = gambar;
+ var oldpath = gambar;https://medium.com/@nadayar/heroku-fu-multiple-servers-on-one-dyno-6fc68d57b373
  var newpath = './uploads/' + 'bukti.png';
       filestore.copySync(oldpath,newpath, function (err) {
         if (err) throw err;
@@ -284,7 +284,7 @@ function addPhoto(req, res) {
 };
 //API START FOR GET FROM IOT//
 // routes will go here
-app.get('/api/data', function(req, res) {
+router.get('/api/data', function(req, res) {
 var ol = Date.now();
 var dateObj = new Date();
 var month = ('0' + (dateObj.getMonth()+1)).slice(-2); //months from 1-12
