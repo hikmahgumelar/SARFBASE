@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8888;
+var port = process.env.PORT || 3100;
 var io = require('socket.io')(12345);
 var iot = require('../model/iot');
 var log = require('../model/log');
@@ -46,7 +46,7 @@ var id = 	req.param('id'),
 tanggal = tanggalformat,
 temp =  req.param('b'),
 hum =  req.param('c'),
-door =  req.param('d'), 
+door =  req.param('d'),
 VPR =  req.param('e'),
 VPS =  req.param('f'),
 VPT =  req.param('g'),
@@ -63,7 +63,7 @@ DGen =  req.param('q'),
 ARRSTER =  req.param('r'),
 Brectf =  req.param('s'),
 MCBTrip =  req.param('t'),
-stat = ol;  								     
+stat = ol;
 //io.emit('transmit', id);
 iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, temp: temp, hum: hum, door: door, VPR: VPR, VPS: VPS, VPT: VPT, Vaccu : Vaccu,
 Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DRectf,DGen: DGen,ARRSTER: ARRSTER,Brectf: Brectf,MCBTrip: MCBTrip,status: "1"
@@ -73,7 +73,7 @@ Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DR
   }else{
    console.log(id + 'product berhasil di tambah' + stat);
    res.send(id + ' berhasil di update'  );
-	message = {	
+	message = {
     from: '"RUANG SERVER" <ruangserver@ibstower.com>', // listed in rfc822 message header
     to: 'hikmah.gumelar@ibstower.com',
     subject: 'PERINGATAN RUANG SERVER '+ temp + ' Derajat Celcius',
@@ -119,8 +119,8 @@ var logBaru = new log({
     DGen: DGen,
     ARRSTER: ARRSTER,
     Brectf: Brectf,
-    MCBTrip: MCBTrip,  
-                        
+    MCBTrip: MCBTrip,
+
 });
 
  logBaru.save(function(err){
@@ -130,7 +130,7 @@ var logBaru = new log({
  	}else{
  		//console.log('berhasil di simpan');
     }
-      
+
  });
 });
 });
