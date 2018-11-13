@@ -15,7 +15,7 @@
     "datatables-query": "^0.2.0",
     "datatables.net": "^1.10.15",
     "datatables.net-bs": "^1.10.15",
-    "debug": "~2.2.0",
+    "debug": "2.6.9",
     "ejs": "~2.5.2",
     "express": "~4.14.0",
     "express-session": "^1.15.6",
