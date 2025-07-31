@@ -1,8 +1,6 @@
 {
   "name": "app-a.p.i.1.0",
   "version": "2.0.3",
-  "private": true,
-  "main":"app.js",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -40,6 +38,6 @@
     "ws": "^1.1.1"
   },
   "engines": {
-    "node": "6.9.4"
+    "node": "10.2.1"
   }
 }

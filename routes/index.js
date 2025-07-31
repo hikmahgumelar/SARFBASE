@@ -32,7 +32,7 @@ router.post('/api/log', function (req, res) {
         params = req.body,
 
         query = datatablesQuery(Model);
-      
+
     query.run(params).then(function (data) {
         res.json(data);
     }, function (err) {
@@ -56,27 +56,27 @@ router.post('/api/upload',function(req,res){
 
       upload(req,res,function(err) {
                 if(err) {
-                        return 
+                        return
                         res.send('error');
                         res.end("Error uploading file.");
                     }
-                    res.send("kekirim");                                                                                                                                                          
+                    res.send("kekirim");
                 res.end("File is uploaded");
                 console.log('uploaded');
             });
 });
-*/ 
+*/
 //ui upload
 
 router.get('/api/upload', function(req, res){
  var gambar = req.param('file');
- var oldpath = gambar;
+ var oldpath = gambar;https://medium.com/@nadayar/heroku-fu-multiple-servers-on-one-dyno-6fc68d57b373
  var newpath = './uploads/' + 'bukti.png';
       filestore.copySync(oldpath,newpath, function (err) {
         if (err) throw err;
         res.write('File ke upload');
         res.end();
-      }); 
+      });
 });
 
 
@@ -107,10 +107,10 @@ router.post('/daftar',
         })(req, res, next);
     });
 router.get('/daftar', function(req, res){
- 
+
  res.render('admin/daftar',{ pesan: req.flash('pesan'), errors: req.flash('error')} );
 
-}); 
+});
 //logout
 
 router.get('/logout',
@@ -127,14 +127,14 @@ console.log("update auto  ");
 iot.update({}, { $set:{ "status" : "0" } }, { multi : true },function (err ,doc){});
 }, 180000);
 
-var versi = "Versi 2.0.4 Beta";
+var versi = "Versi 2.0.5";
 
 /* server */
 // routes will go here
 /*
 //socket.on('transmit', function (data) {
 
- 
+
 
 var getdata = data;
 });*/
@@ -161,14 +161,14 @@ iot.find({}, function(err, data){
 });
 
 router.get('/mon', function(req, res, next) {
- 
+
   res.render('log', { title: 'Log Monitoring',versi: versi});
 
 });
 
 
 router.post('/tambahIoT', function(req, res, next){
-  iot.find({}, function(err, data){  
+  iot.find({}, function(err, data){
     var i = data.length + 1;
 var iotBaru = new iot({
     id: "IBST"+i++,
@@ -195,7 +195,7 @@ var iotBaru = new iot({
     Brectf: "N/A",
     MCBTrip: "N/A",
     alamat: req.body.alamat,
-    status: "N/A",    
+    status: "N/A",
 });
  iotBaru.save(function(err){
 
@@ -205,10 +205,10 @@ var iotBaru = new iot({
  		console.log('berhasil di simpan');
  	      res.redirect('/tambah');
     }
-      
+
  });
-});      
-    
+});
+
  });
 router.get('/tambah', auth.BolehMasuk,function(req, res){
   iot.find({}, function(err, data){
@@ -221,7 +221,7 @@ var idbaru1 = "IBST"+i++;
 router.get('/:id', function(req, res){
 iot.findById(req.params.id,function(err, dataiot){
   if(err)
-  iot.find({}, function(err, dataiotfull){ 
+  iot.find({}, function(err, dataiotfull){
   res.render('edit-iot',{ title: 'edit data IoT',dataiot: dataiot, datafull: dataiotfull,versi: versi});
 });
 });
@@ -232,7 +232,7 @@ router.post('/perubahan/:id',function(req, res){
   var iotBaru = ({
       site: req.body.site,
       harga: req.body.alamat,
-      
+
   });
 iot.findByIdAndUpdate(req.params.id, iotBaru, function (err, dataiot){
    res.redirect('/tambah');
@@ -248,10 +248,10 @@ iot.findByIdAndRemove(req.params.id,function(err, dataiot){
 
 //public uploads
 
-//upload versi2 
+//upload versi2
 router.get('/photos', uploadFile, addPhoto)
 
-// file is automatically saved to /public/uploads, let's just set 
+// file is automatically saved to /public/uploads, let's just set
 function uploadFile(req, res, next) {
   if (req.files) {
     req.body.url = "http://localhost:7777" + req.files.file.path.split("/").slice(-2).join("/")
@@ -276,13 +276,121 @@ function addPhoto(req, res) {
     , title         : e.title
     , description   : e.description
   })
-  
+
   photo.save(function(err) {
     if (err) return res.send(err.message, 500)
     res.json("OK")
   })
 };
+//API START FOR GET FROM IOT//
+// routes will go here
+router.get('/api/data', function(req, res) {
+var ol = Date.now();
+var dateObj = new Date();
+var month = ('0' + (dateObj.getMonth()+1)).slice(-2); //months from 1-12
+var day = ('0' + dateObj.getDate()).slice(-2);
+var year = dateObj.getFullYear();
+var jam = ('0' + dateObj.getHours()).slice(-2);
+var menit = ('0' + dateObj.getMinutes()).slice(-2);
+var detik = dateObj.getSeconds();
+tanggalformat = day + "-" + month + "-" + year + "  " + jam + ":" + menit + "        WIB" ;
 
+//var NewIot = new iot({
+
+var id = 	req.param('id'),
+tanggal = tanggalformat,
+temp =  req.param('b'),
+hum =  req.param('c'),
+door =  req.param('d'),
+VPR =  req.param('e'),
+VPS =  req.param('f'),
+VPT =  req.param('g'),
+Vaccu =  req.param('h'),
+Vrectf=  req.param('i'),
+Ir =  req.param('j'),
+Is =  req.param('k'),
+It =  req.param('l'),
+FUEL =  req.param('m'),
+GON =  req.param('n'),
+GFAIL =  req.param('o'),
+DRectf =  req.param('p'),
+DGen =  req.param('q'),
+ARRSTER =  req.param('r'),
+Brectf =  req.param('s'),
+MCBTrip =  req.param('t'),
+stat = ol;
+//io.emit('transmit', id);
+iot.findOneAndUpdate({id: id}, {$set:{tanggal: tanggal, temp: temp, hum: hum, door: door, VPR: VPR, VPS: VPS, VPT: VPT, Vaccu : Vaccu,
+Vrectf: Vrectf,Ir: Ir,Is: Is,It: It,FUEL: FUEL,GON: GON,GFAIL : GFAIL,DRectf: DRectf,DGen: DGen,ARRSTER: ARRSTER,Brectf: Brectf,MCBTrip: MCBTrip,status: "1"
+}}, { new: true}, function (err ,doc){
+  if (err) {
+    console.log(id);
+  }else{
+   console.log(id + 'product berhasil di tambah' + stat);
+   res.send(id + ' berhasil di update'  );
+	message = {
+    from: '"RUANG SERVER" <ruangserver@ibstower.com>', // listed in rfc822 message header
+    to: 'hikmah.gumelar@ibstower.com',
+    subject: 'PERINGATAN RUANG SERVER '+ temp + ' Derajat Celcius',
+    html: '<h1>RUANG SERVER HIGHTEMP  '+ temp + ' Derajat Celcius </h1>'
+	};
+
+if (id=="IBST1" && temp >= 26 ){
+
+transporter.sendMail(message, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+}
+}
+
+var iot = require('../model/iot');
+
+iot.find({"id":id}, function (err, cb) {
+  //console.log(cb[0].site);
+ var arrdoor = ["CLOSE","OPEN"];
+var logBaru = new log({
+    id: id,
+    site: cb[0].site,
+    tanggal: tanggal,
+    temp: temp,
+    hum: hum,
+    door: arrdoor[door],
+    VPR: VPR,
+    VPS: VPS,
+    VPT: VPT,
+    Vaccu: Vaccu,
+    Vrectf: Vrectf,
+    Ir: Ir,
+    Is: Is,
+    It: It,
+    FUEL: FUEL,
+    GON: GON,
+    GFAIL: GFAIL,
+    DRectf: DRectf,
+    DGen: DGen,
+    ARRSTER: ARRSTER,
+    Brectf: Brectf,
+    MCBTrip: MCBTrip,
+
+});
+
+ logBaru.save(function(err){
+
+    if(err){
+ 		console.log(err);
+ 	}else{
+ 		//console.log('berhasil di simpan');
+    }
+
+ });
+});
+});
+
+});
+
+//}); penutup iot
 module.exports = router;
-
-
